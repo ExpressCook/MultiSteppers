@@ -64,7 +64,7 @@ private:
 
 	unsigned long _lastStepTime; //micro
 
-	unsigned long _stepInterval;  //micro
+	unsigned long _stepInterval;  //micro //zero means stop
 	unsigned long _stepIntervalRemain; 
 	unsigned long _initStepInterval; //micro
 	unsigned long _minStepInterval;  //micro

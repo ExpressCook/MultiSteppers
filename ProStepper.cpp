@@ -73,7 +73,7 @@ void ProStepper::move(long relative)
 
 bool ProStepper::run()
 {
-	if(_stepCount<=_totalSteps)
+	if(_stepCount<_totalSteps && _stepInterval!=0)
 	{	
 		//make a step
 		unsigned long currentTime = micros();
@@ -141,6 +141,7 @@ void ProStepper::computeNewSpeed()
 	else if(_stepCount == _totalSteps)
 	{
 		_stepCount = 0;
+		_accelCount = 0;
 		_totalSteps = 0;
 
 		_stepInterval = 0;
