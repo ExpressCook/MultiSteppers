@@ -1,4 +1,5 @@
 #include "ProStepper.h"
+#define DEBUG true
 
 ProStepper::ProStepper(int stepSize, int pinDir, int pinStep, int pinEn)
 {
@@ -50,30 +51,71 @@ void ProStepper::setDeAcceleration(int deacceleration)
 
 void ProStepper::moveTo(long absolute)
 {
-	_targetPosition = absolute;
-	move(absolute - _position);
+	if(absolute != _targetPosition)
+		move(absolute - _position);
 }
 
 void ProStepper::move(long relative)
 {
-	if(relative<0)
-		setDirection(DIRECTION_CCW);
+	//no need to move
+	if(relative == 0)
+		return;
+
+	_targetPosition = _position + relative;
+
+	//the stepper is still moving
+	if(_stepInterval != 0)
+	{
+		long minDeaccelSteps = (_stepSize*1000000)
+						/(_stepInterval*_stepInterval*_deacceleration/500000);
+		long minDeaccelDistance = minDeaccelSteps * _stepSize;
+
+		// the stepper unable to stop in relative distance
+		// first stop then move in another direction
+		if(relative < minDeaccelDistance)
+		{
+			stop(minDeaccelSteps);
+			moveTo(_targetPosition);
+		}
+		// the stepper already in deaccelraion phase
+		// just wait a little to let it finish
+		else if(_stepCount>_deaccelStart)
+		{	
+			while(run())
+			{}
+			moveTo(_targetPosition);
+		}
+		// the stepper can continue work
+		// just need to modify some limit value
+		else
+		{
+			//modify the current settings
+			_totalSteps = _stepCount + (abs(relative)/_stepSize);
+			computeNewLimit();
+		}
+	}
+	//the stepper motor has finished moving
 	else
-		setDirection(DIRECTION_CW);
-
-	_totalSteps = abs(relative)/_stepSize;
-	computeNewLimit();
-
-	_stepInterval = _initStepInterval;
-	_stepCount = 0;
-	_accelCount = 0;
-	_lastStepTime = micros();
+	{
+		if(relative<0)
+			setDirection(DIRECTION_CCW);
+		else
+			setDirection(DIRECTION_CW);
+	
+		_totalSteps = (abs(relative)/_stepSize)-1; //_totalSteps start with 0
+		computeNewLimit();
+	
+		_stepInterval = _initStepInterval;
+		_stepCount = 0;
+		_accelCount = 0;
+		_lastStepTime = micros();
+	}
 
 }
 
 bool ProStepper::run()
 {
-	if(_stepCount<_totalSteps && _stepInterval!=0)
+	if(_stepCount<=_totalSteps && _stepInterval!=0)
 	{	
 		//make a step
 		unsigned long currentTime = micros();
@@ -94,12 +136,38 @@ bool ProStepper::run()
 		return false;
 	}
 	else
+	{
+#if DEBUG
+
+		Serial.println("finish move!");
+		Serial.print("targetPos:");
+		Serial.println(_targetPosition);
+		Serial.print("currentPos:");
+		Serial.println(_position);
+
+#endif
 		return true;
+	}
 }
 
-void ProStepper::stop()
+//block until the motor stop
+// do not ensure correct position
+void ProStepper::stop(long minDeaccelSteps)
 {
+	if(minDeaccelSteps == 0)
+		minDeaccelSteps = (_stepSize*1000000)
+						/(_stepInterval*_stepInterval*_deacceleration/500000);
 
+	_totalSteps = _stepCount + minDeaccelSteps+1;
+	computeNewLimit();
+
+	while(run())
+	{}
+}
+
+void ProStepper::hardStop()
+{
+	digitalWrite(_pinEn, LOW);
 }
 
 void ProStepper::computeNewSpeed()
@@ -112,7 +180,7 @@ void ProStepper::computeNewSpeed()
 		_accelCount++;
 		computeNewInterval();
 	}
-	else if(_stepCount = _accelStop)
+	else if(_stepCount == _accelStop && _stepCount!=_deaccelStart)
 	{
 		//run init
 		_stepCount++;
@@ -148,6 +216,17 @@ void ProStepper::computeNewSpeed()
 		_stepIntervalRemain = 0;
 	}
 
+#if DEBUG
+
+	Serial.print("step count:");
+	Serial.println(_stepCount);
+	Serial.print("accel count:");
+	Serial.println(_accelCount);
+	Serial.print("interval:");
+	Serial.println(_stepInterval);
+
+#endif
+
 }
 
 void ProStepper::computeNewInterval()
@@ -164,7 +243,7 @@ void ProStepper::computeNewLimit()
 	_accelStepsToMaxSpeed = (_maxSpeed * _maxSpeed)/(2*_stepSize*_acceleration) ;  //equation 4
 	_accelStepsLimit = (_totalSteps*_deacceleration)/(_acceleration+_deacceleration);  //equation 5
 	
-	if(_accelStepsToMaxSpeed>_accelStepsLimit)
+	if(_accelStepsToMaxSpeed > _accelStepsLimit)
 	{
 		_deaccelValue = -(_totalSteps - _accelStepsLimit);
 		_accelStop = _accelStepsLimit;

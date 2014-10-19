@@ -10,6 +10,7 @@ public:
 	ProStepper(int stepSize, int pinDir, int pinStep, int pinEn);
 
 	//set motion profile
+	//only valid after the next call of move
 	void setMaxSpeed(int maxSpeed);
 	void setAcceleration(int acceleration);
 	void setDeAcceleration(int deacceleration);
@@ -18,7 +19,8 @@ public:
 	void moveTo(long absolute);
 	void move(long relative);
 	bool run();
-	void stop();
+	void stop(long minDeaccelSteps);
+	void hardStop();
 
 	//get current states
 	float getCurrentSpeed();
