@@ -11,9 +11,9 @@ public:
 
 	//set motion profile
 	//only valid after the next call of move
-	void setMaxSpeed(int maxSpeed);
-	void setAcceleration(int acceleration);
-	void setDeAcceleration(int deacceleration);
+	void setMaxSpeed(long maxSpeed);
+	void setAcceleration(long acceleration);
+	void setDeAcceleration(long deacceleration);
 
 	//set target position
 	void moveTo(long absolute);
@@ -50,9 +50,9 @@ private:
 	long _targetPosition;
 	int _direction; //0 is counterclock 1 is clockwise
 
-	int _maxSpeed;  //degree per second
-	int _acceleration; //degree per second 2
-	int _deacceleration; // degree per second 2
+	long _maxSpeed;  //degree per second
+	long _acceleration; //degree per second 2
+	long _deacceleration; // degree per second 2
 
 	long _totalSteps;     
 	long _accelStepsToMaxSpeed;

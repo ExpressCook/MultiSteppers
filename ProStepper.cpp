@@ -1,5 +1,5 @@
 #include "ProStepper.h"
-#define DEBUG true
+#define DEBUG false
 
 ProStepper::ProStepper(int stepSize, int pinDir, int pinStep, int pinEn)
 {
@@ -9,9 +9,9 @@ ProStepper::ProStepper(int stepSize, int pinDir, int pinStep, int pinEn)
 	_pinEn = pinEn;
 	_pulseWidth = 1;
 
-	setMaxSpeed(1);
-	setAcceleration(1);
-	setDeAcceleration(1);
+	//setMaxSpeed(1);
+	//setAcceleration(1);
+	//setDeAcceleration(1);
 
 	_position=0;
 	_direction=DIRECTION_CW;
@@ -29,21 +29,31 @@ ProStepper::ProStepper(int stepSize, int pinDir, int pinStep, int pinEn)
 	pinMode(_pinEn, OUTPUT);
 }
 
-void ProStepper::setMaxSpeed(int maxSpeed)
+void ProStepper::setMaxSpeed(long maxSpeed)
 {
 	_maxSpeed = maxSpeed;
 	_minStepInterval = _stepSize * 1000000 / _maxSpeed; //equation 1
-	//computeNewLimit();
+
+#if DEBUG
+	Serial.println("------------SetMaxSpeed------------");
+	Serial.print("minStepInterval:");
+	Serial.println(_minStepInterval);
+#endif 
 }
 
-void ProStepper::setAcceleration(int acceleration)
+void ProStepper::setAcceleration(long acceleration)
 {
 	_acceleration = acceleration;
-	_initStepInterval = 676000 * sqrt(2*_stepSize/_acceleration); //equation 2
-	//computeNewLimit();
+	_initStepInterval = 6760 * sqrt(20000*_stepSize/_acceleration); //equation 2
+
+#if DEBUG
+	Serial.println("------------SetAccel------------");
+	Serial.print("initStepInterval");
+	Serial.println(_initStepInterval);
+#endif 
 }
 
-void ProStepper::setDeAcceleration(int deacceleration)
+void ProStepper::setDeAcceleration(long deacceleration)
 {
 	_deacceleration = deacceleration;
 	//computeNewLimit();
@@ -111,6 +121,16 @@ void ProStepper::move(long relative)
 		_lastStepTime = micros();
 	}
 
+#if DEBUG
+	Serial.println("----------Move To----------");
+	Serial.print("initStepInterval:");
+	Serial.println(_stepInterval);
+	Serial.println("totalSteps:");
+	Serial.println(_totalSteps);
+	Serial.print("initStepCount:");
+	Serial.println(_stepCount);
+#endif 
+
 }
 
 bool ProStepper::run()
@@ -139,11 +159,13 @@ bool ProStepper::run()
 	{
 #if DEBUG
 
-		Serial.println("finish move!");
+		Serial.println("---------finish move!----------");
 		Serial.print("targetPos:");
 		Serial.println(_targetPosition);
 		Serial.print("currentPos:");
 		Serial.println(_position);
+		Serial.print("finalStepInterval:");
+		Serial.println(_stepInterval);
 
 #endif
 		return true;
@@ -218,10 +240,9 @@ void ProStepper::computeNewSpeed()
 
 #if DEBUG
 
+	Serial.println("---------run and next---------------");
 	Serial.print("step count:");
 	Serial.println(_stepCount);
-	Serial.print("accel count:");
-	Serial.println(_accelCount);
 	Serial.print("interval:");
 	Serial.println(_stepInterval);
 
@@ -232,10 +253,24 @@ void ProStepper::computeNewSpeed()
 void ProStepper::computeNewInterval()
 {
 	//equation 3
-	_stepInterval = _stepInterval - 
-	               (2*_stepInterval + _stepIntervalRemain/(4*_accelCount+1)); 
- 	_stepIntervalRemain = (2*_stepInterval + _stepIntervalRemain)%(4*_accelCount+1);
+	long interval = _stepInterval;
+	//_stepInterval = _stepInterval - 
+	//               ((2*_stepInterval + _stepIntervalRemain)/(4*_accelCount+1)); 
+	interval = interval - 
+	           (2*interval/(4*_accelCount+1));
+ 	//_stepIntervalRemain = (2*_stepInterval + _stepIntervalRemain)%(4*_accelCount+1);
 
+	_stepInterval = interval;
+
+#if DEBUG
+
+	Serial.println("++++compute interval+++++");
+	Serial.print("accel count:");
+	Serial.println(_accelCount);
+	Serial.print("new interval:");
+	Serial.println(_stepInterval);
+
+#endif
 }
 
 void ProStepper::computeNewLimit()
@@ -255,6 +290,20 @@ void ProStepper::computeNewLimit()
 	}
 
 	_deaccelStart = _totalSteps + _deaccelValue;
+
+#if DEBUG
+
+	Serial.println("--------------new limit----------");
+	Serial.print("accel to max speed need:");
+	Serial.println(_accelStepsToMaxSpeed);
+	Serial.print("accel limit is:");
+	Serial.println(_accelStepsLimit);
+	Serial.print("accel stop at:");
+	Serial.println(_accelStop);
+	Serial.print("deaccel start at:");
+	Serial.println(_deaccelStart);
+
+#endif 
 }
 
 void ProStepper::step()
@@ -273,7 +322,15 @@ void ProStepper::setDirection(int direction)
 		if(_direction == DIRECTION_CW)
 			digitalWrite(_pinDir, HIGH);
 		else
-			digitalWrite(_pinDir, LOW);	
+			digitalWrite(_pinDir, LOW);
+
+#if DEBUG
+
+		Serial.println("--------direction set-----------");
+		Serial.print("direction:");
+		Serial.println(_direction);
+
+#endif	
 	}
 }
 
