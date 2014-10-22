@@ -70,6 +70,9 @@ private:
 	unsigned long _stepIntervalRemain; 
 	unsigned long _initStepInterval; //micro
 	unsigned long _minStepInterval;  //micro
+
+	bool _hasCommand;
+	long _storedPosition;
 	
 };
 

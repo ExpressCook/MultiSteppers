@@ -24,6 +24,9 @@ ProStepper::ProStepper(int stepSize, int pinDir, int pinStep, int pinEn)
 	_stepInterval =0;
 	_stepIntervalRemain=0;
 
+	_hasCommand = false;
+	_storedPosition = 0;
+
 	//set up pinmode
 	pinMode(_pinDir, OUTPUT);
 	pinMode(_pinStep, OUTPUT);
@@ -100,7 +103,9 @@ void ProStepper::move(long relative)
 #endif
 
 			stop(minDeaccelSteps);
-			moveTo(_targetPosition);
+
+			_hasCommand = true;
+			_storedPosition = _targetPosition;
 		}
 		// the stepper already in deaccelraion phase
 		// just wait a little to let it finish
@@ -109,10 +114,8 @@ void ProStepper::move(long relative)
 #if DEBUG
 			Serial.println("~~~~~~wait till the deaccel end~~~~~");
 #endif
-			while(!run())
-			{}
-	
-			moveTo(_targetPosition);
+			_hasCommand = true;
+			_storedPosition = _targetPosition;
 		}
 		// the stepper can continue work
 		// just need to modify some limit value
@@ -215,8 +218,6 @@ void ProStepper::stop(long minDeaccelSteps)
 	_accelStop = _deaccelStart>_accelStop ? _accelStop : _deaccelStart; 
 	_deaccelValue = -minDeaccelSteps;
 
-	while(!run())
-	{}
 }
 
 void ProStepper::hardStop()
@@ -268,6 +269,13 @@ void ProStepper::computeNewSpeed()
 
 		_stepInterval = 0;
 		_stepIntervalRemain = 0;
+
+		if(_hasCommand)
+		{
+			moveTo(_storedPosition);
+			_hasCommand = false;
+			_storedPosition = 0;
+		}
 	}
 
 #if DEBUG
