@@ -15,6 +15,7 @@ ProStepper::ProStepper(int stepSize, int pinDir, int pinStep, int pinEn)
 
 	_position=0;
 	_direction=DIRECTION_CW;
+	digitalWrite(_pinDir, HIGH);
 
 	_stepCount=0;
 	_accelCount=0;
@@ -61,7 +62,7 @@ void ProStepper::setDeAcceleration(long deacceleration)
 
 void ProStepper::moveTo(long absolute)
 {
-	if(absolute != _targetPosition)
+	if(absolute != _position)
 		move(absolute - _position);
 }
 
@@ -76,14 +77,28 @@ void ProStepper::move(long relative)
 	//the stepper is still moving
 	if(_stepInterval != 0)
 	{
-		long minDeaccelSteps = (_stepSize*1000000)
-						/(_stepInterval*_stepInterval*_deacceleration/500000);
+		//compute the minDeaccelSteps
+		long minDeaccelSteps = 50;
+		if(_stepCount<_accelStop)
+			minDeaccelSteps = _stepCount;
+		else if(_stepCount<_deaccelStart)
+			minDeaccelSteps = - _deaccelValue;
+
 		long minDeaccelDistance = minDeaccelSteps * _stepSize;
 
 		// the stepper unable to stop in relative distance
 		// first stop then move in another direction
+		if(_direction == DIRECTION_CCW)
+			relative = -relative;
+
 		if(relative < minDeaccelDistance)
 		{
+#if DEBUG
+			Serial.println("~~~~~~first try to stop then move opposite~~~~~");
+			Serial.print("minDeaccelSteps is:");
+			Serial.println(minDeaccelSteps);
+#endif
+
 			stop(minDeaccelSteps);
 			moveTo(_targetPosition);
 		}
@@ -91,14 +106,22 @@ void ProStepper::move(long relative)
 		// just wait a little to let it finish
 		else if(_stepCount>_deaccelStart)
 		{	
-			while(run())
+#if DEBUG
+			Serial.println("~~~~~~wait till the deaccel end~~~~~");
+#endif
+			while(!run())
 			{}
+	
 			moveTo(_targetPosition);
 		}
 		// the stepper can continue work
 		// just need to modify some limit value
 		else
 		{
+#if DEBUG
+			Serial.println("~~~~~~just need to modify the settings~~~~~");
+#endif
+
 			//modify the current settings
 			_totalSteps = _stepCount + (abs(relative)/_stepSize);
 			computeNewLimit();
@@ -159,13 +182,13 @@ bool ProStepper::run()
 	{
 #if DEBUG
 
-		Serial.println("---------finish move!----------");
-		Serial.print("targetPos:");
-		Serial.println(_targetPosition);
-		Serial.print("currentPos:");
-		Serial.println(_position);
-		Serial.print("finalStepInterval:");
-		Serial.println(_stepInterval);
+		//Serial.println("---------finish move!----------");
+		//Serial.print("targetPos:");
+		//Serial.println(_targetPosition);
+		//Serial.print("currentPos:");
+		//Serial.println(_position);
+		//Serial.print("finalStepInterval:");
+		//Serial.println(_stepInterval);
 
 #endif
 		return true;
@@ -177,13 +200,22 @@ bool ProStepper::run()
 void ProStepper::stop(long minDeaccelSteps)
 {
 	if(minDeaccelSteps == 0)
-		minDeaccelSteps = (_stepSize*1000000)
-						/(_stepInterval*_stepInterval*_deacceleration/500000);
+	{
+		if(_stepCount<_accelStop)
+			minDeaccelSteps = _stepCount;
+		else if(_stepCount<_deaccelStart)
+			minDeaccelSteps = - _deaccelValue;
+		else
+			//already deaccelerating just need to wait
+			return;
+	}
+		
+	_totalSteps = _stepCount + minDeaccelSteps;
+	_deaccelStart = _stepCount;
+	_accelStop = _deaccelStart>_accelStop ? _accelStop : _deaccelStart; 
+	_deaccelValue = -minDeaccelSteps;
 
-	_totalSteps = _stepCount + minDeaccelSteps+1;
-	computeNewLimit();
-
-	while(run())
+	while(!run())
 	{}
 }
 
