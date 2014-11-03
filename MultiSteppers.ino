@@ -1,15 +1,30 @@
 #include "ProStepper.h"
 #define DEBUG true
 
-int Step1 = 13;
-int Dir1 = 12;
+//stepper in x direction
+//small motor move the carrier
+int Dir1 = 28;
+int Step1 = 26;
+int Slp1 = 24;
+int Res1 = 22;
 int En1 = 1;
-int Step2 = 11;
-int Dir2 = 10;
+
+//limit switch in x direction
+int switch1 = 52;
+
+//stepper in y direction
+//big motor move the hole gantry
+int Dir2 = 36;
+int Step2 = 34;
+int Slp2 = 32;
+int Res2 = 30;
 int En2 = 1;
 
-ProStepper step1 (1,Dir1,Step1,En1);
-ProStepper step2 (1,Dir2,Step2,En2);
+//limit switch in y direction
+int switch2 = 53;
+
+ProStepper step1 (1,Dir1,Step1,Slp1,Res1,En1);
+ProStepper step2 (1,Dir2,Step2,Slp2,Res2,En2);
 
 void setup()
 {
@@ -85,4 +100,9 @@ void executeCommand()
 		else if(mode == 'a')
 			step2.moveTo(position);
 	}
+}
+
+void callibrateMotor()
+{
+
 }

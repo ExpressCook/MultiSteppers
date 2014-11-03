@@ -7,7 +7,7 @@ class ProStepper
 {
 public:
 	//constructors
-	ProStepper(int stepSize, int pinDir, int pinStep, int pinEn);
+	ProStepper(int stepSize, int pinDir, int pinStep, int pinSlp, int pinRes, int pinEn);
 
 	//set motion profile
 	//only valid after the next call of move
@@ -42,6 +42,8 @@ private:
 
 	int _pinDir;
 	int _pinStep;
+	int _pinSlp;
+	int _pinRes;
 	int _pinEn;
 	int _stepSize; //degree
 	unsigned int _pulseWidth; //micro

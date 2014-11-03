@@ -1,11 +1,13 @@
 #include "ProStepper.h"
 #define DEBUG false
 
-ProStepper::ProStepper(int stepSize, int pinDir, int pinStep, int pinEn)
+ProStepper::ProStepper(int stepSize, int pinDir, int pinStep, int pinSlp, int pinRes, int pinEn)
 {
 	_stepSize = stepSize;
 	_pinDir = pinDir;
 	_pinStep = pinStep;
+	_pinSlp = pinSlp;
+	_pinRes = pinRes;
 	_pinEn = pinEn;
 	_pulseWidth = 1;
 
@@ -15,7 +17,7 @@ ProStepper::ProStepper(int stepSize, int pinDir, int pinStep, int pinEn)
 
 	_position=0;
 	_direction=DIRECTION_CW;
-	digitalWrite(_pinDir, HIGH);
+	
 
 	_stepCount=0;
 	_accelCount=0;
@@ -30,7 +32,14 @@ ProStepper::ProStepper(int stepSize, int pinDir, int pinStep, int pinEn)
 	//set up pinmode
 	pinMode(_pinDir, OUTPUT);
 	pinMode(_pinStep, OUTPUT);
+	pinMode(_pinSlp, OUTPUT);
+	pinMode(_pinRes, OUTPUT);
 	pinMode(_pinEn, OUTPUT);
+
+	//init pin output
+	digitalWrite(_pinDir, HIGH);
+	digitalWrite(_pinSlp, HIGH);
+	digitalWrite(_pinRes, HIGH);
 }
 
 void ProStepper::setMaxSpeed(long maxSpeed)
