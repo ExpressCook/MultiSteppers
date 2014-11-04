@@ -15,10 +15,12 @@ ProStepper::ProStepper(int stepSize, int pinDir, int pinStep, int pinSlp, int pi
 	//setAcceleration(1);
 	//setDeAcceleration(1);
 
+	_isDisabled = false;
+	_isSleep = false;
+
 	_position=0;
 	_direction=DIRECTION_CW;
 	
-
 	_stepCount=0;
 	_accelCount=0;
 	_totalSteps=0;
@@ -70,6 +72,11 @@ void ProStepper::setDeAcceleration(long deacceleration)
 {
 	_deacceleration = deacceleration;
 	//computeNewLimit();
+}
+
+void ProStepper::setPosition(long position)
+{
+	_position = position;
 }
 
 void ProStepper::moveTo(long absolute)
@@ -194,21 +201,21 @@ bool ProStepper::run()
 	{
 #if DEBUG
 
-		//Serial.println("---------finish move!----------");
-		//Serial.print("targetPos:");
-		//Serial.println(_targetPosition);
-		//Serial.print("currentPos:");
-		//Serial.println(_position);
-		//Serial.print("finalStepInterval:");
-		//Serial.println(_stepInterval);
+		Serial.println("---------finish move!----------");
+		Serial.print("targetPos:");
+		Serial.println(_targetPosition);
+		Serial.print("currentPos:");
+		Serial.println(_position);
+		Serial.print("finalStepInterval:");
+		Serial.println(_stepInterval);
 
 #endif
 		return true;
 	}
 }
 
-//block until the motor stop
 // do not ensure correct position
+// when minDeaccelSteps = 0 it will automatically caculate the value
 void ProStepper::stop(long minDeaccelSteps)
 {
 	if(minDeaccelSteps == 0)
@@ -229,9 +236,52 @@ void ProStepper::stop(long minDeaccelSteps)
 
 }
 
+void ProStepper::blockMoveTo(long absolute)
+{
+	moveTo(absolute);
+	while(!run()){};
+}
+
+void ProStepper::blockMove(long relative)
+{
+	move(relative);
+	while(!run()){};
+}
+
 void ProStepper::hardStop()
 {
 	digitalWrite(_pinEn, LOW);
+	digitalWrite(_pinRes, LOW);
+	_isDisabled = true;
+}
+
+void ProStepper::recover()
+{
+	if(_isDisabled)
+	{
+		digitalWrite(_pinRes, HIGH);
+		digitalWrite(_pinEn, HIGH);
+		_isDisabled = false;	
+	}
+}
+
+void ProStepper::sleep()
+{
+	if(!_isDisabled)
+		hardStop();
+
+	digitalWrite(_pinSlp, LOW);
+	_isSleep = true;
+}
+
+void ProStepper::wake()
+{
+	if(_isSleep)
+	{
+		recover();
+		digitalWrite(_pinSlp, HIGH);
+		_isSleep = false;
+	}
 }
 
 void ProStepper::computeNewSpeed()
