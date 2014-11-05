@@ -252,6 +252,17 @@ void ProStepper::hardStop()
 {
 	digitalWrite(_pinEn, LOW);
 	digitalWrite(_pinRes, LOW);
+
+	//reset values
+	_stepCount = 0;
+	_accelCount = 0;
+	_totalSteps = 0;
+	_stepInterval = 0;
+	_stepIntervalRemain = 0;
+	_hasCommand = false;
+	_storedPosition = 0;
+	_targetPosition = _position;
+
 	_isDisabled = true;
 }
 

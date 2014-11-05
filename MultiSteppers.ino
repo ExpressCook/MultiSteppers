@@ -1,9 +1,9 @@
 #include "ProStepper.h"
-#define DEBUG true
+#define DEBUG false
 
 //x y direction range
-long rangeX = 5000;
-long rangeY = 3000;
+long rangeX = 1800;
+long rangeY = 800;
 
 //stepper in x direction
 //small motor move the carrier
@@ -13,12 +13,12 @@ int Slp1 = 24;
 int Res1 = 22;
 int En1 = 1;
 
-int xSpeed = 600;
-int xAccel = 700;
-int xDeAccel = 700;
+int xSpeed = 400;
+int xAccel = 1000;
+int xDeAccel = 1000;
 
 //limit switch in x direction
-int switch1 = 52;
+int switch1 = 53;
 
 //stepper in y direction
 //big motor move the hole gantry
@@ -28,17 +28,17 @@ int Slp2 = 32;
 int Res2 = 30;
 int En2 = 1;
 
-int ySpeed = 600;
-int yAccel = 700;
-int yDeAccel = 700;
+int ySpeed = 200;
+int yAccel = 1000;
+int yDeAccel = 1000;
 
 //limit switch in y direction
-int switch2 = 53;
+int switch2 = 52;
 
 //emergency stop, interrupt
 //0-2 1-3 2-21 3-20 4-19 5-18 
-int hardStopInter = 5;
-int hardStopPin = 18;
+int hardStopInter = 2;
+int hardStopPin = 21;
 
 ProStepper step1 (1,Dir1,Step1,Slp1,Res1,En1);
 ProStepper step2 (1,Dir2,Step2,Slp2,Res2,En2);
@@ -46,14 +46,14 @@ ProStepper step2 (1,Dir2,Step2,Slp2,Res2,En2);
 void setup()
 {
   //set up serial port	
-  Serial.begin(115200); //9600
-  Serial.setTimeout(2);
+  Serial.begin(9600); //9600
+  Serial.setTimeout(5);
 
   //set up the switch
   pinMode(switch1, INPUT_PULLUP);
   pinMode(switch2, INPUT_PULLUP);
   pinMode(hardStopPin, INPUT_PULLUP);
-  attachInterrupt(hardStopInter, emergencyStop, FALLING);
+  attachInterrupt(hardStopInter, emergencyStop, LOW);
 
   //set up the motion profile of motor X
   step1.setMaxSpeed(xSpeed);
@@ -108,7 +108,6 @@ void loop()
 		
 		//$ (end mark)
 		Serial.read();
-
 		executeCommand();
 	}
 
@@ -120,13 +119,9 @@ void loop()
 
 void executeCommand()
 {
-#if DEBUG
-
 	Serial.print(chosedStep);
 	Serial.print(mode);
 	Serial.println(position);
-
-#endif
 
 	long currentPos = 0;
 	if(chosedStep == 'x')
@@ -188,16 +183,25 @@ void reportState()
 
 void callibrateMotors()
 {
-	step1.setMaxSpeed(300);
-	step2.setMaxSpeed(300);
+	step1.setMaxSpeed(150);
+	step2.setMaxSpeed(150);
 
 	step1.move(-rangeX-1000);
 	step2.move(-rangeY-1000);
 
 	int s1, s2 = HIGH;
-	bool c1, c2 = false;
+	bool c1=false;
+	bool c2=false;
 	while( (!c1) || (!c2) )
 	{
+#if DEBUG
+		Serial.print("calibrating:");
+		Serial.print(c1);
+		Serial.print(c2);
+		Serial.print(s1);
+		Serial.println(s2);
+#endif
+
 		step1.run();
 		step2.run();
 
@@ -206,6 +210,9 @@ void callibrateMotors()
 
 		if(!c1 && (s1 == LOW))
 		{
+#if DEBUG
+		Serial.print("x switch hit");
+#endif
 			c1 = true;
 			step1.hardStop();
 			step1.setPosition(0);
@@ -213,6 +220,9 @@ void callibrateMotors()
 
 		if(!c2 && (s2 == LOW))
 		{
+#if DEBUG
+		Serial.print("y switch hit");
+#endif
 			c2 = true;
 			step2.hardStop();
 			step2.setPosition(0);
@@ -227,10 +237,6 @@ void callibrateMotors()
 
 void emergencyStop()
 {
-#if DEBUG
-	Serial.println("emergency stop!!");
-#endif 
-
 	step1.hardStop();
-	step2.hardStop();
+	step2.hardStop();	
 }
