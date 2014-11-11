@@ -1,4 +1,5 @@
 #include "ProStepper.h"
+#include "DualMotor.h"
 #define DEBUG false
 
 //x y direction range
@@ -14,8 +15,8 @@ int Res1 = 22;
 int En1 = 1;
 
 int xSpeed = 400;
-int xAccel = 1000;
-int xDeAccel = 1000;
+int xAccel = 600;
+int xDeAccel = 600;
 
 //limit switch in x direction
 int switch1 = 53;
@@ -28,9 +29,9 @@ int Slp2 = 32;
 int Res2 = 30;
 int En2 = 1;
 
-int ySpeed = 200;
-int yAccel = 1000;
-int yDeAccel = 1000;
+int ySpeed = 400;
+int yAccel = 500;
+int yDeAccel = 500;
 
 //limit switch in y direction
 int switch2 = 52;
@@ -42,6 +43,7 @@ int hardStopPin = 21;
 
 ProStepper step1 (1,Dir1,Step1,Slp1,Res1,En1);
 ProStepper step2 (1,Dir2,Step2,Slp2,Res2,En2);
+DualMotor DCMotors;
 
 void setup()
 {
@@ -64,27 +66,33 @@ void setup()
   step2.setMaxSpeed(ySpeed);
   step2.setAcceleration(yAccel);
   step2.setDeAcceleration(yDeAccel);
+
+  //set up the DC motor
+  DCMotors.init();
 }
 
 //information extracted from serial comunication
-char chosedStep;
+char chosedMotor;
 char mode;
-long position;
+long value;
 
 
 void loop()
 {
+	//parse the command
 	if(Serial.available()>1)
 	{
 		// x y 
 		// g(general for both x and y)
+		// r(rotation) l(linear actuator)
 		do
 		{
-			chosedStep = Serial.read();
+			chosedMotor = Serial.read();
 		}
-		while(chosedStep!='x' && chosedStep!='y' && chosedStep!='g');
+		while(chosedMotor!='x' && chosedMotor!='y' && chosedMotor!='g'
+			  && chosedMotor!='r' && chosedMotor!='l');
 		
-		if(chosedStep=='x' || chosedStep=='y')
+		if(chosedMotor=='x' || chosedMotor=='y')
 		{	
 			// r(relative) a(absolute)
 			do
@@ -94,9 +102,34 @@ void loop()
 			while(mode!='a' && mode!='r');
 
 			//1000
-			position = Serial.parseInt();
+			value = Serial.parseInt();
 		}
-		else if(chosedStep=='g')
+		else if(chosedMotor=='r')
+		{
+			// speed control
+			// open loop(o) close loop(c)
+			do
+			{
+				mode = Serial.read();
+			}
+			while(mode!='o' && mode!='c');
+
+			//1000
+			value = Serial.parseInt();
+		}
+		else if(chosedMotor=='l')
+		{
+			// p(relative) t(tolerance)
+			do
+			{
+				mode = Serial.read();
+			}
+			while(mode!='p' && mode!='t');
+
+			//1000
+			value = Serial.parseInt();
+		}
+		else if(chosedMotor=='g')
 		{
 			// c(callibration)
 			do
@@ -111,48 +144,59 @@ void loop()
 		executeCommand();
 	}
 
+	//runing the motors
 	step1.run();
 	step2.run();
 
+	//report the motor status
 	reportState(); 
 }
 
 void executeCommand()
 {
-	Serial.print(chosedStep);
+	Serial.print(chosedMotor);
 	Serial.print(mode);
-	Serial.println(position);
+	Serial.println(value);
 
 	long currentPos = 0;
-	if(chosedStep == 'x')
+	if(chosedMotor == 'x')
 	{
 		if(mode == 'r')
 		{
 			currentPos = step1.getCurrentPos();
-			position = constrain(-currentPos,0,rangeX-currentPos);
-			step1.move(position);
+			value = constrain(-currentPos,0,rangeX-currentPos);
+			step1.move(value);
 		}
 		else if(mode == 'a')
 		{
-			position = constrain(position,0,rangeX);
-			step1.moveTo(position);
+			value = constrain(value,0,rangeX);
+			step1.moveTo(value);
 		}
 	}
-	else if(chosedStep == 'y')
+	else if(chosedMotor == 'y')
 	{
 		if(mode == 'r')
 		{
 			currentPos = step2.getCurrentPos();
-			position = constrain(-currentPos,0,rangeY-currentPos);
-			step2.move(position);
+			value = constrain(-currentPos,0,rangeY-currentPos);
+			step2.move(value);
 		}
 		else if(mode == 'a')
 		{
-			position = constrain(position,0,rangeY);
-			step2.moveTo(position);
+			value = constrain(value,0,rangeY);
+			step2.moveTo(value);
 		}
 	}
-	else if(chosedStep == 'g')
+	else if(chosedMotor == 'r')
+	{
+		if(mode == 'o')
+			DCMotors.setM1Speed(value);
+	}
+	else if(chosedMotor == 'l')
+	{
+
+	}
+	else if(chosedMotor == 'g')
 	{
 		if(mode == 'c')
 			callibrateMotors();
@@ -238,5 +282,7 @@ void callibrateMotors()
 void emergencyStop()
 {
 	step1.hardStop();
-	step2.hardStop();	
+	step2.hardStop();
+	DCMotors.setM1Speed(0);
+	DCMotors.setM2Speed(0);	
 }
