@@ -1,5 +1,6 @@
 #include "ProStepper.h"
-#include "DualMotor.h"
+#include "DCMotor.h"
+#include "LinearActuator.h"
 #define DEBUG false
 
 //x y direction range
@@ -41,9 +42,31 @@ int switch2 = 52;
 int hardStopInter = 2;
 int hardStopPin = 21;
 
+//DC rotate
+unsigned char rotate_dir = 7;
+unsigned char rotate_pwm = 9;
+unsigned char rotate_fb = A0;
+unsigned char rotate_nd2 = 4;
+unsigned char rotate_nsf = 12;
+
+//DC linear
+unsigned char linear_dir = 8;
+unsigned char linear_pwm = 10;
+unsigned char linear_fb = A1;
+unsigned char linear_nd2 = 4;
+unsigned char linear_nsf = 12;
+int linear_pos = A2;
+
+//range of linear actuator
+long rangeLMin = 10;
+long rangeLMax = 900; 
+
+
 ProStepper step1 (1,Dir1,Step1,Slp1,Res1,En1);
 ProStepper step2 (1,Dir2,Step2,Slp2,Res2,En2);
-DualMotor DCMotors;
+DCMotor dcRotate (rotate_dir,rotate_pwm, rotate_fb, rotate_nd2, rotate_nsf);
+DCMotor dcLinear(linear_dir, linear_pwm, linear_fb, linear_nd2, linear_nsf);
+LinearActuator linearAct (dcLinear, linear_pos);
 
 void setup()
 {
@@ -68,14 +91,14 @@ void setup()
   step2.setDeAcceleration(yDeAccel);
 
   //set up the DC motor
-  DCMotors.init();
+  dcRotate.init();
+  linearAct.init();
 }
 
 //information extracted from serial comunication
 char chosedMotor;
 char mode;
 long value;
-
 
 void loop()
 {
@@ -147,6 +170,7 @@ void loop()
 	//runing the motors
 	step1.run();
 	step2.run();
+	linearAct.run();
 
 	//report the motor status
 	reportState(); 
@@ -190,11 +214,15 @@ void executeCommand()
 	else if(chosedMotor == 'r')
 	{
 		if(mode == 'o')
-			DCMotors.setM1Speed(value);
+			dcRotate.setSpeed(value);
 	}
 	else if(chosedMotor == 'l')
 	{
-
+		if(mode == 'p')
+		{
+			value = constrain(value, rangeLMin, rangeLMax);
+			linearAct.moveTo(value);
+		}
 	}
 	else if(chosedMotor == 'g')
 	{
@@ -283,6 +311,6 @@ void emergencyStop()
 {
 	step1.hardStop();
 	step2.hardStop();
-	DCMotors.setM1Speed(0);
-	DCMotors.setM2Speed(0);	
+	dcRotate.setSpeed(0);
+	linearAct.setSpeed(0);
 }
