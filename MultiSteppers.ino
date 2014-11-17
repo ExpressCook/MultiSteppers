@@ -58,8 +58,10 @@ unsigned char linear_nsf = 12;
 int linear_pos = A2;
 
 //range of linear actuator
-long rangeLMin = 10;
-long rangeLMax = 900; 
+long rangeLMin = 100;
+long rangeLMax = 900;
+
+//serial port 
 
 
 ProStepper step1 (1,Dir1,Step1,Slp1,Res1,En1);
@@ -71,8 +73,8 @@ LinearActuator linearAct (dcLinear, linear_pos);
 void setup()
 {
   //set up serial port	
-  Serial.begin(9600); //9600
-  Serial.setTimeout(5);
+  Serial1.begin(9600); //9600
+  Serial1.setTimeout(5);
 
   //set up the switch
   pinMode(switch1, INPUT_PULLUP);
@@ -103,14 +105,14 @@ long value;
 void loop()
 {
 	//parse the command
-	if(Serial.available()>1)
+	if(Serial1.available()>1)
 	{
 		// x y 
 		// g(general for both x and y)
 		// r(rotation) l(linear actuator)
 		do
 		{
-			chosedMotor = Serial.read();
+			chosedMotor = Serial1.read();
 		}
 		while(chosedMotor!='x' && chosedMotor!='y' && chosedMotor!='g'
 			  && chosedMotor!='r' && chosedMotor!='l');
@@ -120,12 +122,12 @@ void loop()
 			// r(relative) a(absolute)
 			do
 			{
-				mode = Serial.read();
+				mode = Serial1.read();
 			}
 			while(mode!='a' && mode!='r');
 
 			//1000
-			value = Serial.parseInt();
+			value = Serial1.parseInt();
 		}
 		else if(chosedMotor=='r')
 		{
@@ -133,37 +135,37 @@ void loop()
 			// open loop(o) close loop(c)
 			do
 			{
-				mode = Serial.read();
+				mode = Serial1.read();
 			}
 			while(mode!='o' && mode!='c');
 
 			//1000
-			value = Serial.parseInt();
+			value = Serial1.parseInt();
 		}
 		else if(chosedMotor=='l')
 		{
 			// p(relative) t(tolerance)
 			do
 			{
-				mode = Serial.read();
+				mode = Serial1.read();
 			}
 			while(mode!='p' && mode!='t');
 
 			//1000
-			value = Serial.parseInt();
+			value = Serial1.parseInt();
 		}
 		else if(chosedMotor=='g')
 		{
 			// c(callibration)
 			do
 			{
-				mode = Serial.read();
+				mode = Serial1.read();
 			}
 			while(mode!='c');
 		}
 		
 		//$ (end mark)
-		Serial.read();
+		Serial1.read();
 		executeCommand();
 	}
 
@@ -178,9 +180,9 @@ void loop()
 
 void executeCommand()
 {
-	Serial.print(chosedMotor);
-	Serial.print(mode);
-	Serial.println(value);
+	Serial1.print(chosedMotor);
+	Serial1.print(mode);
+	Serial1.println(value);
 
 	long currentPos = 0;
 	if(chosedMotor == 'x')
@@ -255,6 +257,11 @@ void reportState()
 
 void callibrateMotors()
 {
+	//callibrate dc motors
+	dcRotate.setSpeed(0);
+	linearAct.moveTo(rangeLMin);
+
+	//callibrate stepper motors
 	step1.setMaxSpeed(150);
 	step2.setMaxSpeed(150);
 
@@ -267,15 +274,16 @@ void callibrateMotors()
 	while( (!c1) || (!c2) )
 	{
 #if DEBUG
-		Serial.print("calibrating:");
-		Serial.print(c1);
-		Serial.print(c2);
-		Serial.print(s1);
-		Serial.println(s2);
+		Serial1.print("calibrating:");
+		Serial1.print(c1);
+		Serial1.print(c2);
+		Serial1.print(s1);
+		Serial1.println(s2);
 #endif
 
 		step1.run();
 		step2.run();
+		linearAct.run();
 
 		s1 = digitalRead(switch1);
 		s2 = digitalRead(switch2);
@@ -283,7 +291,7 @@ void callibrateMotors()
 		if(!c1 && (s1 == LOW))
 		{
 #if DEBUG
-		Serial.print("x switch hit");
+		Serial1.print("x switch hit");
 #endif
 			c1 = true;
 			step1.hardStop();
@@ -293,7 +301,7 @@ void callibrateMotors()
 		if(!c2 && (s2 == LOW))
 		{
 #if DEBUG
-		Serial.print("y switch hit");
+		Serial1.print("y switch hit");
 #endif
 			c2 = true;
 			step2.hardStop();
@@ -312,5 +320,5 @@ void emergencyStop()
 	step1.hardStop();
 	step2.hardStop();
 	dcRotate.setSpeed(0);
-	linearAct.setSpeed(0);
+	linearAct.stop();
 }

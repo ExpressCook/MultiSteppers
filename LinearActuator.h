@@ -10,7 +10,6 @@ class LinearActuator
 		LinearActuator(DCMotor motor, int pinPos);
 		
 		void init();
-		void setSpeed(int speed);
 
 		void moveTo(long absolute);
 		void move(long relative);
@@ -22,6 +21,7 @@ class LinearActuator
 		long getTargetPos();
 
 	private:
+		void setSpeed(int speed);
 		void updatePos();
 
 		int _pinPos;
