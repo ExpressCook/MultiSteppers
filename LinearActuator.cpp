@@ -16,9 +16,9 @@ void LinearActuator::init()
 	_targetPosition = _position;
 	setSpeed(0);
 
-	_Kp = 30;
+	_Kp = 50;
 	_Ki = 1;
-	_Kd = 0;
+	_Kd = 1;
 
 	_diff = 0;
 	_lastDiff = 0;
@@ -59,7 +59,7 @@ bool LinearActuator::run()
 	}
 	else
 	{
-		_control = _Kp*_diff + _Ki*_integ/350 + _Kd*_diffDiff;
+		_control = _Kp*_diff + _Ki*_integ/5000 + _Kd*_diffDiff/50;
 		_control = constrain(_control, -400, 400);
 		setSpeed(_control);
 	}
