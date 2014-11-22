@@ -99,6 +99,7 @@ void setup()
   //set up the DC motor
   dcRotate.init();
   linearAct.init();
+
 }
 
 //information extracted from serial comunication
@@ -266,6 +267,9 @@ void reportState()
 		report += endMark; 
 
 		lastReportTime = now;
+
+		Serial1.println(report);
+		Serial.println(report);
 	}
 }
 
