@@ -14,6 +14,7 @@ class DCMotor
     // PUBLIC METHODS
     void init(); // Initialize TIMER 1, set the PWM to 20kHZ. 
     void setSpeed(int speed); // Set speed for M1.
+    int getSpeed();
     unsigned int getCurrent(); // Get current reading for M1. 
     unsigned char getFault(); // Get fault reading.
     
@@ -23,6 +24,8 @@ class DCMotor
     unsigned char _MFB;
     unsigned char _nD2;
     unsigned char _nSF;
+
+    int _speed;
 };
 
 #endif

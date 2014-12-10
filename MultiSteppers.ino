@@ -5,7 +5,7 @@
 
 //x y direction range
 long rangeX = 1700;
-long rangeY = 730;
+long rangeY = 720;
 
 //stepper in x direction
 //small motor move the carrier
@@ -58,11 +58,11 @@ unsigned char linear_nsf = 12;
 int linear_pos = A2;
 
 //range of linear actuator
-long rangeLMin = 0;
-long rangeLMax = 870;
+long rangeLMin = 5;
+long rangeLMax = 870; //for cdr
 
 //serial port 
-int serialRate = 9600;
+int serialRate = 19200;
 int serialTimeout = 5;
 
 ProStepper step1 (1,Dir1,Step1,Slp1,Res1,En1);
@@ -191,9 +191,9 @@ void readCommand(HardwareSerial serial)
 
 void executeCommand()
 {
-	Serial1.print(chosedMotor);
-	Serial1.print(mode);
-	Serial1.println(value);
+	//Serial1.print(chosedMotor);
+	//Serial1.print(mode);
+	//Serial1.println(value);
 
 	Serial.print(chosedMotor);
 	Serial.print(mode);
@@ -249,22 +249,31 @@ void executeCommand()
 }
 
 unsigned long lastReportTime = 0;
-unsigned long ReportInterval = 500;
+unsigned long ReportInterval = 100;
 void reportState()
 {
 	unsigned long now = millis();
 	if(now - lastReportTime >= ReportInterval)
 	{
 		//make a report
-		// xp100$yp1000$
-		String endMark = "$";
-		String report = "xp";
+		// 100!1000!200!100
+		// x ! y! r! l
+
+		String endMark = "!";
+		String report = "*";
 		report += step1.getCurrentPos();
 		report += endMark;
 
-		report += "yp";
+		//report += "y";
 		report += step2.getCurrentPos();
+		report += endMark;
+
+		//report += "r";
+		report += dcRotate.getSpeed();
 		report += endMark; 
+
+		//report += "l";
+		report += linearAct.getCurrentPos();
 
 		lastReportTime = now;
 
@@ -325,6 +334,9 @@ void callibrateMotors()
 			step2.hardStop();
 			step2.setPosition(0);
 		}
+
+		Serial.println("c");
+		Serial1.println("c");
 	}
 
 	step1.recover();

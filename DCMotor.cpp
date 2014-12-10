@@ -45,6 +45,7 @@ void DCMotor::init()
 // Set speed for motor 1, speed is a number betwenn -400 and 400
 void DCMotor::setSpeed(int speed)
 {
+  _speed = speed;
   unsigned char reverse = 0;
   
   if (speed < 0)
@@ -63,6 +64,12 @@ void DCMotor::setSpeed(int speed)
     digitalWrite(_MDIR,HIGH);
   else
     digitalWrite(_MDIR,LOW);
+}
+
+//return the motor speed
+int DCMotor::getSpeed()
+{
+  return _speed;
 }
 
 // Return motor 1 current value in milliamps.

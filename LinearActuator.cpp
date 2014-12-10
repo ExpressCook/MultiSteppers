@@ -16,8 +16,8 @@ void LinearActuator::init()
 	_targetPosition = _position;
 	setSpeed(0);
 
-	_Kp = 50;
-	_Ki = 1;
+	_Kp = 100;
+	_Ki = 3;
 	_Kd = 1;
 
 	_diff = 0;
@@ -30,7 +30,6 @@ void LinearActuator::init()
 void LinearActuator::setSpeed(int speed)
 {
 	_motor.setSpeed(speed);
-	_speed = speed;
 }
 
 void LinearActuator::moveTo(long absolute)
@@ -69,7 +68,7 @@ bool LinearActuator::run()
 #if DEBUG
 	Serial.println("run acctuator:");
 	Serial.print("speed:");
-	Serial.println(_speed);
+	Serial.println(_motor.getSpeed());
 	Serial.print("pos:");
 	Serial.println(_position);
 	Serial.print("target:");

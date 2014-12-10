@@ -27,7 +27,6 @@ class LinearActuator
 		int _pinPos;
 		DCMotor _motor;
 
-		int _speed;
 		long _position;
 		long _targetPosition;
 
