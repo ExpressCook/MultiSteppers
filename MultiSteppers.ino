@@ -105,12 +105,12 @@ void readCommand(HardwareSerial serial)
 		}
 		else if(chosedMotor=='l')
 		{
-			// p(relative) t(tolerance)
+			// p(position) h(hit)
 			do
 			{
 				mode = serial.read();
 			}
-			while(mode!='p' && mode!='t');
+			while(mode!='p' && mode!='h');
 
 			//1000
 			value = serial.parseInt();
@@ -181,6 +181,10 @@ void executeCommand()
 		{
 			value = constrain(value, rangeLMin, rangeLMax);
 			linearAct.moveTo(value);
+		}
+		else if(mode == 'h')
+		{
+			linearAct.moveTillHit();
 		}
 	}
 	else if(chosedMotor == 'g')

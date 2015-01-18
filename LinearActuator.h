@@ -13,6 +13,7 @@ class LinearActuator
 
 		void moveTo(long absolute);
 		void move(long relative);
+		void moveTillHit();
 		bool run();
 		void stop();
 
@@ -27,18 +28,19 @@ class LinearActuator
 		int _pinPos;
 		DCMotor _motor;
 
+		//position info
 		long _position;
-		long _targetPosition;
+		long _targetPosition;		
 
-		long _Kp;
-		long _Ki;
-		long _Kd;
-
+		//control state
 		long _diff;
 		long _lastDiff;
 		long _diffDiff;
 		long _integ;
 		long _control;
+
+		//is current limit enabled
+		bool _isCurrentLimitOn;
 };
 
 #endif
