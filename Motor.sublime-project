@@ -2,7 +2,8 @@
 	"folders":
 	[
 		{
-			"path": "/Users/wwd/Developer/ExpressCook/MultiSteppers"
+			"path": "/Users/wwd/Developer/ExpressCook/MultiSteppers",
+			"file_exclude_patterns": ["Motor.*"]
 		}
 	]
 }
