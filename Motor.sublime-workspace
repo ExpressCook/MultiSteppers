@@ -1,0 +1,1141 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"State",
+				"States"
+			],
+			[
+				"Sta",
+				"States"
+			],
+			[
+				"stance",
+				"stanceStates"
+			],
+			[
+				"fligh",
+				"flightStates"
+			],
+			[
+				"reco",
+				"RecordState"
+			],
+			[
+				"dt",
+				"dt"
+			],
+			[
+				"get",
+				"getCurrentPos"
+			],
+			[
+				"dc",
+				"dcRotate"
+			],
+			[
+				"Seri",
+				"Serial1"
+			],
+			[
+				"serial",
+				"serialTimeout"
+			],
+			[
+				"range",
+				"rangeLMin"
+			],
+			[
+				"rang",
+				"rangeLMax"
+			],
+			[
+				"_d",
+				"_diffDiff"
+			],
+			[
+				"linear",
+				"linearAct"
+			],
+			[
+				"move",
+				"moveTo"
+			],
+			[
+				"line",
+				"linear_pos"
+			],
+			[
+				"lin",
+				"linear_fb"
+			],
+			[
+				"linear_p",
+				"linear_pwm"
+			],
+			[
+				"li",
+				"linear_dir"
+			],
+			[
+				"mov",
+				"moveTo"
+			],
+			[
+				"_",
+				"_pinPos"
+			],
+			[
+				"M",
+				"MFB"
+			],
+			[
+				"ro",
+				"rotate_nsf"
+			],
+			[
+				"rotate_d",
+				"rotate_nd2"
+			],
+			[
+				"set",
+				"setM1Speed"
+			],
+			[
+				"v",
+				"value"
+			],
+			[
+				"DC",
+				"DCMotors"
+			],
+			[
+				"l",
+				"LOW"
+			],
+			[
+				"dit",
+				"digitalWrite"
+			],
+			[
+				"repor",
+				"report"
+			],
+			[
+				"report",
+				"ReportInterval"
+			],
+			[
+				"ran",
+				"rangeY"
+			],
+			[
+				"cal",
+				"callibrateMotors"
+			],
+			[
+				"ste",
+				"step2"
+			],
+			[
+				"y",
+				"yAccel"
+			],
+			[
+				"sw",
+				"switch2"
+			],
+			[
+				"hard",
+				"hardStop"
+			],
+			[
+				"step",
+				"step1"
+			],
+			[
+				"emer",
+				"emergencyStop"
+			],
+			[
+				"_is",
+				"_isSleep"
+			],
+			[
+				"_pin",
+				"_pinSlp"
+			],
+			[
+				"_pins",
+				"_pinSlp"
+			],
+			[
+				"re",
+				"relative"
+			],
+			[
+				"DI",
+				"DIRECTION_CCW"
+			],
+			[
+				"acce",
+				"_accelStop"
+			],
+			[
+				"_acc",
+				"_accelStop"
+			],
+			[
+				"_de",
+				"_deaccelStart"
+			],
+			[
+				"_ste",
+				"_stepSize"
+			],
+			[
+				"_acce",
+				"_accelStop"
+			],
+			[
+				"pri",
+				"println"
+			],
+			[
+				"D",
+				"DEBUG"
+			],
+			[
+				"print",
+				"println"
+			],
+			[
+				"_step",
+				"_stepCount"
+			],
+			[
+				"E",
+				"_pinEn"
+			],
+			[
+				"_s",
+				"_stepCount"
+			],
+			[
+				"minD",
+				"minDeaccelSteps"
+			],
+			[
+				"min",
+				"minDeaccelSteps"
+			],
+			[
+				"comp",
+				"computeNewLimit"
+			],
+			[
+				"_st",
+				"_stepSize"
+			],
+			[
+				"prin",
+				"print"
+			],
+			[
+				"_a",
+				"_accelCount"
+			],
+			[
+				"int",
+				"int"
+			],
+			[
+				"getCurrent",
+				"getCurrentSpeed"
+			],
+			[
+				"abs",
+				"absolute"
+			],
+			[
+				"setD",
+				"setDeAcceleration"
+			],
+			[
+				"_accel",
+				"_accelCount"
+			],
+			[
+				"_accelSt",
+				"_accelStepsToMaxSpeed"
+			],
+			[
+				"_max",
+				"_accelStepsToMaxSpeed"
+			],
+			[
+				"_deacc",
+				"_deaccelSteps"
+			],
+			[
+				"_accelStep",
+				"_accelStepsLimit"
+			],
+			[
+				"_accelSte",
+				"_accelStepsLimit"
+			],
+			[
+				"_ac",
+				"_acceleration"
+			],
+			[
+				"_stepInt",
+				"_stepIntervalRemain"
+			],
+			[
+				"_stepI",
+				"_stepIntervalRemain"
+			],
+			[
+				"di",
+				"digitalWrite"
+			],
+			[
+				"_p",
+				"_position"
+			],
+			[
+				"de",
+				"deacceleration"
+			],
+			[
+				"dea",
+				"_deacceleration"
+			],
+			[
+				"stu",
+				"struct	struct"
+			],
+			[
+				"x",
+				"xsize"
+			],
+			[
+				"b",
+				"binfo_scrny"
+			],
+			[
+				"bin",
+				"binfo_scrnx"
+			],
+			[
+				"binfo",
+				"binfo_vram"
+			],
+			[
+				"s",
+				"SCRNY"
+			],
+			[
+				"S",
+				"SCRNX"
+			],
+			[
+				"view",
+				"viewXML"
+			],
+			[
+				"to",
+				"total"
+			],
+			[
+				"margin",
+				"margin-left"
+			],
+			[
+				"bor",
+				"border-radius"
+			],
+			[
+				"pd",
+				"padding-top"
+			],
+			[
+				"padd",
+				"padding"
+			],
+			[
+				"mari",
+				"margin-top"
+			],
+			[
+				"refr",
+				"refreshList"
+			],
+			[
+				"req",
+				"reqDate"
+			],
+			[
+				"add",
+				"addChild  (function)"
+			],
+			[
+				"show",
+				"showResult"
+			],
+			[
+				"plr",
+				"plResult"
+			],
+			[
+				"mysqli_f",
+				"mysqli_fetch_array"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"bod",
+				"border-radius"
+			],
+			[
+				"mar",
+				"margin-top"
+			],
+			[
+				"bac",
+				"background-image"
+			],
+			[
+				"bo",
+				"border-radius"
+			],
+			[
+				"pa",
+				"padding"
+			],
+			[
+				"te",
+				"text-align"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"ma",
+				"margin-left"
+			],
+			[
+				"co",
+				"color"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"time",
+				"timeslider"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "DCMotor.h",
+			"settings":
+			{
+				"buffer_size": 686,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "LinearActuator.h",
+			"settings":
+			{
+				"buffer_size": 620,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 71.0,
+		"selected_items":
+		[
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"git:c",
+				"Git: Commit"
+			],
+			[
+				"git:s",
+				"Git: Status"
+			],
+			[
+				"git",
+				"Git: Add..."
+			],
+			[
+				"git: s",
+				"Git: Status"
+			],
+			[
+				"git:",
+				"Git: Add Selected Hunk"
+			],
+			[
+				"git:ad",
+				"Git: Add..."
+			],
+			[
+				"git: commit",
+				"Git: Commit history"
+			],
+			[
+				"list",
+				"Package Control: List Packages"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"pac",
+				"Package Control: Install Package"
+			],
+			[
+				"add",
+				"Project: Add Folder"
+			],
+			[
+				"projec",
+				"Project: Add Folder"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"py",
+				"Set Syntax: Python"
+			],
+			[
+				"javas",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"java",
+				"Set Syntax: Java"
+			],
+			[
+				"list ",
+				"Package Control: List Packages"
+			],
+			[
+				"html",
+				"Set Syntax: HTML"
+			],
+			[
+				"xml",
+				"Set Syntax: XML"
+			],
+			[
+				"jva",
+				"Set Syntax: Java"
+			],
+			[
+				"package",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"About"
+			],
+			[
+				"pacakage ",
+				"Package Control: Install Package"
+			],
+			[
+				"pacak ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 435.0
+	},
+	"console":
+	{
+		"height": 118.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/wwd/.bash_profile",
+		"/Users/wwd/.zshrc",
+		"/Users/wwd/Developer/minibase/src/main.C",
+		"/Users/wwd/Developer/minibase/src/ErrProc.sample",
+		"/Users/wwd/Downloads/minibase-627178d213170ffb31d8955541f684fc00303155/src/hfpage.C",
+		"/Users/wwd/Developer/workspace for java/alogrithm/data/knapsack_big.txt",
+		"/Users/wwd/Developer/workspace for java/alogrithm/data/dijkstraData.txt",
+		"/Users/wwd/Developer/workspace for java/alogrithm/data/g1.txt",
+		"/Users/wwd/Developer/workspace for java/alogrithm/data/tsp.txt",
+		"/Users/wwd/Developer/workspace for java/alogrithm/data/tsps.txt",
+		"/Users/wwd/Developer/workspace for java/alogrithm/data/knapsack1.txt",
+		"/Users/wwd/Developer/workspace for java/alogrithm/data/knapsack2.txt",
+		"/Users/wwd/Developer/workspace for java/alogrithm/data/gs.txt",
+		"/Users/wwd/Developer/workspace for java/alogrithm/data/g1 copy.txt",
+		"/Users/wwd/Developer/workspace for java/alogrithm/data/clustering1.txt",
+		"/Users/wwd/Developer/workspace for java/alogrithm/data/clustering2.txt",
+		"/Users/wwd/Developer/workspace for java/alogrithm/data/clustering_big.txt",
+		"/Users/wwd/Developer/workspace for java/alogrithm/edges.txt",
+		"/Users/wwd/Developer/ExpressCook/ExpressCookMain/Code Convention.txt",
+		"/Users/wwd/Downloads/RaibertHopperProblem.m",
+		"/Users/wwd/Developer/ExpressCook/MultiSteppers/MultiSteppers.ino",
+		"/Users/wwd/Developer/ExpressCook/MultiSteppers/DCMotor.h",
+		"/Users/wwd/Developer/ExpressCook/MultiSteppers/LinearActuator.cpp",
+		"/Users/wwd/Developer/ExpressCook/MultiSteppers/DCMotor.cpp",
+		"/Users/wwd/Developer/matlab/CV/hw1/computeH.m",
+		"/Users/wwd/Developer/ExpressCook/MultiSteppers/LinearActuator.h",
+		"/Users/wwd/Developer/matlab/CV/hw5/runTrackPooth_SDM_rotate.m",
+		"/Users/wwd/Downloads/EPnP_matlab/main.m",
+		"/Users/wwd/Developer/Arduino/arduino-read-only/hardware/arduino/cores/arduino/HardwareSerial.cpp",
+		"/Users/wwd/Developer/Arduino/arduino-read-only/hardware/arduino/cores/arduino/Print.cpp",
+		"/private/etc/postfix/aliases",
+		"/private/etc/zshenv",
+		"/Users/wwd/Learning/CMU/MRSD Project/ILR/p4/LA.module",
+		"/Users/wwd/Learning/CMU/MRSD Project/ILR/p4/samplecode.module",
+		"/Users/wwd/Developer/ExpressCook/MultiSteppers/DualMotor.cpp",
+		"/Users/wwd/Developer/ExpressCook/MultiSteppers/DualMotor.h",
+		"/Users/wwd/Developer/ExpressCook/DCTest/DualMotor.h",
+		"/Users/wwd/Downloads/dual-mc33926-motor-shield-master/DualMC33926MotorShield/examples/Demo/Demo.ino",
+		"/Users/wwd/Developer/ExpressCook/MultiSteppers/DualMC33926MotorShield.h",
+		"/Users/wwd/Developer/ExpressCook/MultiSteppers/DualMC33926MotorShield.cpp",
+		"/Users/wwd/Developer/ExpressCook/MultiSteppers/ProStepper.cpp",
+		"/Users/wwd/Developer/Arduino/arduino-read-only/hardware/arduino/cores/arduino/HardwareSerial.h",
+		"/Users/wwd/Developer/Arduino/Library Source/SoftwareSerial/keywords.txt",
+		"/Users/wwd/Developer/Arduino/Library Source/WiFi/WiFiClient.cpp",
+		"/Users/wwd/Developer/matlab/CV/HW4 copy/segTransfer/detectImages.m",
+		"/Users/wwd/Developer/matlab/CV/HW4 copy/segTransfer/getBoundImages.m",
+		"/Users/wwd/Developer/matlab/CV/HW4 copy/baselineESVM/batchDetectImageESVM.m",
+		"/Users/wwd/Developer/matlab/CV/HW4 copy/baselineESVM/createDSIFTFeatures.m",
+		"/Users/wwd/Developer/matlab/CV/HW4 copy/baselineESVM/createFilterBankFeature.m",
+		"/Users/wwd/Developer/matlab/CV/HW4 copy/baselineESVM/demoESVM.m",
+		"/Users/wwd/Developer/matlab/CV/HW4 copy/baselineESVM/q3_3.m",
+		"/Users/wwd/Developer/matlab/CV/HW4 copy/baselineESVM/q3_4.m",
+		"/Users/wwd/Developer/matlab/CV/HW4 copy/baselineESVM/q3_5.m",
+		"/Users/wwd/Developer/matlab/CV/HW4 copy/baselineESVM/testReducedModel.m",
+		"/Users/wwd/Developer/ExpressCook/MultiSteppers/ProStepper.h",
+		"/Users/wwd/Developer/Qt/qt-5.2-host/Makefile",
+		"/Users/wwd/Documents/eagle/Power System/partlist",
+		"/Users/wwd/Documents/Arduino/libraries/AccelStepper/AccelStepper.h",
+		"/Users/wwd/Developer/ExpressCook/MotorSensorLab/Final/Final.ino",
+		"/Users/wwd/Documents/Arduino/libraries/AccelStepper/AccelStepper.cpp",
+		"/Users/wwd/Developer/matlab/CV/hw3/supervised/createTrainHistograms.m",
+		"/Users/wwd/Learning/CMU/MRSD Project/ILR/p2/samplecode.module",
+		"/Users/wwd/Developer/Arduino/Library Source/Stepper/Stepper.cpp",
+		"/Users/wwd/Developer/Arduino/Library Source/Stepper/Stepper.h",
+		"/Users/wwd/Learning/CMU/MRSD Project/ILR/template/samplecode.module",
+		"/Users/wwd/Developer/Arduino/Stepper motor/StepMotor/StepMotor.ino",
+		"/Users/wwd/Documents/Arduino/libraries/AccelStepper/examples/MultiStepper/MultiStepper.pde",
+		"/Users/wwd/Downloads/AccelStepper/AccelStepper.cpp",
+		"/Users/wwd/Downloads/AccelStepper/AccelStepper.h",
+		"/Users/wwd/Downloads/AccelStepper/examples/MultiStepper/MultiStepper.pde",
+		"/Users/wwd/Documents/Arduino/libraries/ProStepper/ProStepper.h",
+		"/Users/wwd/Documents/Arduino/libraries/ProStepper/ProStepper.cpp",
+		"/Applications/MATLAB_R2014a.app/Contents/PkgInfo",
+		"/Users/wwd/Downloads/Patch/ReadMe.txt",
+		"/Users/wwd/Downloads/AccelStepper/examples/AFMotor_ConstantSpeed/AFMotor_ConstantSpeed.pde",
+		"/Users/wwd/Downloads/AccelStepper/examples/MotorShield/MotorShield.pde",
+		"/Users/wwd/Documents/Arduino/libraries/Steppers/Steppers.cpp",
+		"/Users/wwd/Documents/Arduino/libraries/Steppers/Steppers.h",
+		"/Users/wwd/Developer/ExpressCook/Steppers/Steppers.h",
+		"/Users/wwd/Downloads/AccelStepper/Makefile",
+		"/Users/wwd/Documents/Arduino/libraries/Time/Time.cpp",
+		"/Users/wwd/Developer/matlab/CV/hw3/runBatchToSuperpixels.m",
+		"/Users/wwd/Documents/vmt-thesis/AbstractClassifier.module",
+		"/Users/wwd/Google Drive/Thesis-OCR/source code/WeWang/PluginOCR.Base/AbstractSegmenter.cs",
+		"/Users/wwd/Google Drive/Thesis-OCR/source code/WeWang/PluginOCR.Tesseract/TesseractExtension.cs",
+		"/Users/wwd/Google Drive/Thesis-OCR/source code/WeWang/PluginOCR.Base/GUI/AbstractMainWindow.cs",
+		"/Users/wwd/Google Drive/Thesis-OCR/source code/WeWang/PluginOCR.Base/AbstractLineClassifier.cs",
+		"/Users/wwd/Google Drive/Thesis-OCR/source code/WeWang/PluginOCR.Base/AbstractClassifier.cs",
+		"/Users/wwd/Documents/vmt-thesis/AbstractSegmenter.module",
+		"/Users/wwd/Google Drive/Thesis-OCR/source code/WeWang/PluginOCR.Base/ClsResult.cs",
+		"/Users/wwd/Google Drive/Thesis-OCR/source code/WeWang/PluginOCR.Base/SegResult.cs",
+		"/Users/wwd/Google Drive/Thesis-OCR/source code/WeWang/PluginOCR.Base/Parameter/ParaOCRInput.cs",
+		"/Users/wwd/Documents/vmt-thesis/IClassifier.module copy 2",
+		"/Users/wwd/Documents/vmt-thesis/IClassifier.module copy",
+		"/Users/wwd/Documents/vmt-thesis/IClassifier.module",
+		"/Users/wwd/Documents/vmt-thesis/ILineClassifier.module",
+		"/Users/wwd/Documents/vmt-thesis/ISegmenter.module",
+		"/Users/wwd/Documents/vmt-thesis/IClassifier1.module",
+		"/Users/wwd/Documents/vmt-thesis/property_demo.module",
+		"/Users/wwd/Documents/vmt-thesis/ISegmenter. module.cs",
+		"/Users/wwd/Developer/Sites/wordpress/wp-config.php",
+		"/Users/wwd/Developer/tolsetOSX/projects/05_day/harib02f/bootpack.c",
+		"/Users/wwd/Learning/in lubeck/Information System/exercise/schema/cities2.xsd",
+		"/Users/wwd/Learning/in lubeck/Information System/exercise/schema/cities2.xml",
+		"/Users/wwd/Downloads/DOMReader(1).java",
+		"/Users/wwd/Downloads/DOMReader.java",
+		"/Users/wwd/Developer/tolsetOSX/haribos/Makefile",
+		"/Users/wwd/Developer/Sites/FinalCounting/index.html",
+		"/Users/wwd/Learning/in lubeck/Internet Programing/Servelets/FirstServlet.java",
+		"/Users/wwd/Learning/in lubeck/Internet Programing/Servelets/DbTableShow.java",
+		"/Users/wwd/Learning/in lubeck/Internet Programing/Servelets/FormServlet.java",
+		"/Users/wwd/Developer/Sites/FinalCounting/scripts/index.js",
+		"/Users/wwd/Developer/Sites/FinalCounting/viewRequest.php",
+		"/private/var/folders/r5/4v344_xd4bn58wr0j0cj8bhc0000gn/T/fz3temp-1/functions.php",
+		"/Users/wwd/Downloads/wordpress/wp-config-sample.php",
+		"/Users/wwd/Downloads/url.html",
+		"/Users/wwd/Developer/Sites/FinalCounting/requestHistory.php",
+		"/Users/wwd/Learning/in lubeck/Information System/exercise/Exam/city.xml",
+		"/Users/wwd/Learning/in lubeck/Information System/exercise/Exam/city.xsl",
+		"/Users/wwd/Learning/in lubeck/Information System/exercise/zoo.xsl",
+		"/Users/wwd/Downloads/PM.txt",
+		"/Users/wwd/Downloads/Eclipse问卷.txt",
+		"/Users/wwd/Desktop/server-status.conf",
+		"/Users/wwd/Developer/tolsetOSX/projects/04_day/harib01a/naskfunc.nas",
+		"/Users/wwd/Developer/Sites/FinalCounting/FoodCounting.sql",
+		"/Users/wwd/Downloads/history.html",
+		"/Users/wwd/Developer/tolsetOSX/haribos/bootpack.c",
+		"/Users/wwd/Developer/tolsetOSX/projects/03_day/harib00j/bootpack.c"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			",",
+			"*",
+			" he ",
+			"escape",
+			"Show",
+			"show",
+			"_speed",
+			"endMark",
+			"serial",
+			"aerial",
+			"Serial",
+			"Serial1",
+			"Serial",
+			"Serial1",
+			"Serial",
+			"Serial1",
+			"Serial",
+			"dcLinear",
+			"dual",
+			"_M1PWM",
+			"DualMotor",
+			"_nSF",
+			"_nD2",
+			"position",
+			"chosedStep",
+			"DualMC33926MotorShield",
+			"_stepIntervalRemain",
+			"_pinEn",
+			"while",
+			"deacceleration",
+			"_stepSize",
+			"_deaccelvalue",
+			"square",
+			"DIRECTION_CCW",
+			"computeNewSpeed",
+			"compute",
+			"computeNewSpeed",
+			"runSpeed",
+			"setOutputPins",
+			"_forward",
+			"step0",
+			"distanceTOg",
+			"$xml",
+			"species",
+			"menu",
+			"font-family",
+			"images",
+			"real",
+			"date",
+			"ul",
+			"header",
+			"div.content",
+			"img",
+			"width",
+			"\">\n",
+			"Sublime",
+			".php",
+			"		</",
+			"li",
+			"this",
+			"super",
+			"DEFAULT",
+			"food"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"",
+			" she ",
+			"Serial",
+			"serial",
+			"Serial1",
+			"Serial",
+			"Serial1",
+			"Serial",
+			"Serial1",
+			"_MPWM",
+			"DCMotor",
+			"value",
+			"chosedMotor",
+			"DualMotor",
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "DCMotor.h",
+					"settings":
+					{
+						"buffer_size": 686,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "LinearActuator.h",
+					"settings":
+					{
+						"buffer_size": 620,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 32.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.git":
+	{
+		"height": 96.0
+	},
+	"replace":
+	{
+		"height": 66.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 137.0,
+	"status_bar_visible": true
+}
