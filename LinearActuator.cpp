@@ -60,10 +60,40 @@ void LinearActuator::moveTillHit()
 bool LinearActuator::run()
 {	
 	//check the current
+	static unsigned long lastCurrentTime=0, currentInterval=10;
+	unsigned long now;
+
+	static int lCurrent=0, llCurrent=0, current=0;
+
 	if(_isCurrentLimitOn)
 	{
-		if(getCurrent()>MAX_CURRENT)
-			stop();
+		now = millis();
+		if(now - lastCurrentTime>=currentInterval)
+		{
+			lastCurrentTime=now;
+
+			llCurrent = lCurrent; lCurrent = current;
+			current = getCurrent();
+			current = current>180? 0:current;
+
+			if(llCurrent>MAX_CURRENT
+		   		&& lCurrent>MAX_CURRENT
+		   		&& current>MAX_CURRENT)
+					stop();
+
+#if DEBUG
+	Serial.print("llCurrent:");
+	Serial.println(llCurrent);
+	Serial.print("lCurrent:");
+	Serial.println(lCurrent);
+	Serial.print("Current:");
+	Serial.println(current);
+#endif
+		}
+	}
+	else
+	{
+		current = 0; llCurrent=0; lCurrent=0;
 	}
 
 	//calculating state 
@@ -86,13 +116,13 @@ bool LinearActuator::run()
 	}
 
 #if DEBUG
-	Serial.println("run acctuator:");
-	Serial.print("speed:");
-	Serial.println(_motor.getSpeed());
-	Serial.print("pos:");
-	Serial.println(_position);
-	Serial.print("target:");
-	Serial.println(_targetPosition);
+	//Serial.println("run acctuator:");
+	//Serial.print("speed:");
+	//Serial.println(_motor.getSpeed());
+	//Serial.print("pos:");
+	//Serial.println(_position);
+	//Serial.print("target:");
+	//Serial.println(_targetPosition);
 #endif
 
 	//update position again, may not necessary?

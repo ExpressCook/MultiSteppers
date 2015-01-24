@@ -194,10 +194,12 @@ void executeCommand()
 	}
 }
 
-unsigned long lastReportTime = 0;
-unsigned long ReportInterval = 100;
+
 void reportState()
 {
+	static unsigned long lastReportTime = 0;
+	static unsigned long ReportInterval = 100;
+	
 	unsigned long now = millis();
 	if(now - lastReportTime >= ReportInterval)
 	{
@@ -220,6 +222,12 @@ void reportState()
 
 		//report += "l";
 		report += linearAct.getCurrentPos();
+
+		///////below here only for the debug message///////
+		report += endMark;
+		report += linearAct.getCurrent();
+		report += endMark;
+		report += dcRotate.getCurrent();
 
 		lastReportTime = now;
 

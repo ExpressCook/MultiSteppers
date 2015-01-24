@@ -22,7 +22,7 @@ const int yAccel = 500;
 const int yDeAccel = 500;
 
 //range of linear actuator
-const long rangeLMin = 5;
-const long rangeLMax = 870; //for cdr
+const long rangeLMin = 35;
+const long rangeLMax = 885; //for cdr
 
 #endif
