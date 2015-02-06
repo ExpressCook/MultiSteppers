@@ -1,17 +1,19 @@
 #include "ProStepper.h"
 #include "DCMotor.h"
 #include "LinearActuator.h"
+#include "RotateMotor.h"
 #include "MotorParam.h"
 #include "MotorWire.h"
 
 #define DEBUG false
 
 //Initialize all Motors gloable variable
-ProStepper step1 (1,Dir1,Step1,Slp1,Res1,En1);
-ProStepper step2 (1,Dir2,Step2,Slp2,Res2,En2);
-DCMotor dcRotate (rotate_dir,rotate_pwm, rotate_fb, rotate_nd2, rotate_nsf);
+ProStepper step1(1,Dir1,Step1,Slp1,Res1,En1);
+ProStepper step2(1,Dir2,Step2,Slp2,Res2,En2);
+DCMotor dcRotate(rotate_dir,rotate_pwm, rotate_fb, rotate_nd2, rotate_nsf);
 DCMotor dcLinear(linear_dir, linear_pwm, linear_fb, linear_nd2, linear_nsf);
-LinearActuator linearAct (dcLinear, linear_pos);
+LinearActuator linearAct(&dcLinear, linear_pos);
+RotateMotor rotateMotor(&dcRotate, encd_1, encd_2);
 
 void setup()
 {
@@ -39,9 +41,8 @@ void setup()
   step2.setDeAcceleration(yDeAccel);
 
   //set up the DC motor
-  dcRotate.init();
+  rotateMotor.init();
   linearAct.init();
-
 }
 
 //information extracted from serial comunication
@@ -59,6 +60,7 @@ void loop()
 	step1.run();
 	step2.run();
 	linearAct.run();
+	rotateMotor.run();
 
 	//report the motor status
 	reportState(); 
@@ -174,6 +176,8 @@ void executeCommand()
 	{
 		if(mode == 'o')
 			dcRotate.setSpeed(value);
+		if(mode == 'c')
+			rotateMotor.rotateWithSpeed(value);
 	}
 	else if(chosedMotor == 'l')
 	{
@@ -217,17 +221,19 @@ void reportState()
 		report += endMark;
 
 		//report += "r";
-		report += dcRotate.getSpeed();
+		report += rotateMotor.getRotateSpeed();
 		report += endMark; 
 
 		//report += "l";
 		report += linearAct.getCurrentPos();
 
 		///////below here only for the debug message///////
+		//linear actuator current
 		report += endMark;
 		report += linearAct.getCurrent();
+		//rotation open loop pwm
 		report += endMark;
-		report += dcRotate.getCurrent();
+		report += dcRotate.getSpeed();
 
 		lastReportTime = now;
 
@@ -239,7 +245,7 @@ void reportState()
 void callibrateMotors()
 {
 	//callibrate dc motors
-	dcRotate.setSpeed(0);
+	rotateMotor.stop();
 	linearAct.moveTo(rangeLMin);
 
 	//callibrate stepper motors
@@ -303,6 +309,6 @@ void emergencyStop()
 {
 	step1.hardStop();
 	step2.hardStop();
-	dcRotate.setSpeed(0);
+	rotateMotor.stop();
 	linearAct.stop();
 }

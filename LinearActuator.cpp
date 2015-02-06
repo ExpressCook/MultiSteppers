@@ -1,10 +1,11 @@
 #include "LinearActuator.h"
 #include "LinearParam.h"
 #include "MotorParam.h"
+#include <Arduino.h>
 
 #define DEBUG false
 
-LinearActuator::LinearActuator(DCMotor motor, int pinPos)
+LinearActuator::LinearActuator(DCMotor *motor, int pinPos)
 {
 	_motor = motor;
 	_pinPos = pinPos;
@@ -12,7 +13,7 @@ LinearActuator::LinearActuator(DCMotor motor, int pinPos)
 
 void LinearActuator::init()
 {
-	_motor.init();
+	_motor->init();
 	pinMode(_pinPos, INPUT);
 
 	//initialze poistion info
@@ -33,7 +34,7 @@ void LinearActuator::init()
 
 void LinearActuator::setSpeed(int speed)
 {
-	_motor.setSpeed(speed);
+	_motor->setSpeed(speed);
 }
 
 void LinearActuator::moveTo(long absolute)
@@ -118,7 +119,7 @@ bool LinearActuator::run()
 #if DEBUG
 	//Serial.println("run acctuator:");
 	//Serial.print("speed:");
-	//Serial.println(_motor.getSpeed());
+	//Serial.println(_motor->getSpeed());
 	//Serial.print("pos:");
 	//Serial.println(_position);
 	//Serial.print("target:");
@@ -131,13 +132,13 @@ bool LinearActuator::run()
 
 void LinearActuator::stop()
 {
-	_motor.setSpeed(0);
+	_motor->setSpeed(0);
 	_targetPosition = _position;
 }
 
 unsigned int LinearActuator::getCurrent()
 {
-	return _motor.getCurrent();
+	return _motor->getCurrent();
 }
 
 long LinearActuator::getCurrentPos()

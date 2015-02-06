@@ -1,13 +1,12 @@
 #ifndef LinearActuator_h
 #define LinearActuator_h
 
-#include <Arduino.h>
 #include "DCMotor.h"
 
 class LinearActuator
 {
 	public:
-		LinearActuator(DCMotor motor, int pinPos);
+		LinearActuator(DCMotor *motor, int pinPos);
 		
 		void init();
 
@@ -26,7 +25,7 @@ class LinearActuator
 		void updatePos();
 
 		int _pinPos;
-		DCMotor _motor;
+		DCMotor *_motor;
 
 		//position info
 		long _position;
