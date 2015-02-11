@@ -229,11 +229,11 @@ void reportState()
 
 		///////below here only for the debug message///////
 		//linear actuator current
-		report += endMark;
-		report += linearAct.getCurrent();
+		//report += endMark;
+		//report += linearAct.getCurrent();
 		//rotation open loop pwm
-		report += endMark;
-		report += dcRotate.getSpeed();
+		//report += endMark;
+		//report += dcRotate.getSpeed();
 
 		lastReportTime = now;
 

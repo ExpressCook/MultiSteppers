@@ -9,6 +9,6 @@ const long KD = 50;
 //current Limit
 //stall current = 650ma
 //no load operation current = ?ma
-const int MAX_CURRENT = 5;
+const int MAX_CURRENT = 50;
 
 #endif

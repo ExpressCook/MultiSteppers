@@ -63,7 +63,7 @@ bool RotateMotor::run()
 
 		_control = constrain(_control, 0, 400);
 
-		_motor->setSpeed(_control);
+		_motor->setSpeed(-_control);
 	}
 }
 
