@@ -43,6 +43,9 @@ void setup()
   //set up the DC motor
   rotateMotor.init();
   linearAct.init();
+
+  //set up hall sensor
+  pinMode(hallSensor, INPUT);
 }
 
 //information extracted from serial comunication
@@ -216,16 +219,20 @@ void reportState()
 		report += step1.getCurrentPos();
 		report += endMark;
 
-		//report += "y";
+		//report y position
 		report += step2.getCurrentPos();
 		report += endMark;
 
-		//report += "r";
+		//report rotation speed
 		report += rotateMotor.getRotateSpeed();
 		report += endMark; 
 
-		//report += "l";
+		//report linear actuator position
 		report += linearAct.getCurrentPos();
+		report += endMark;
+
+		//report hall sensor reading
+		report += getDistance();
 
 		///////below here only for the debug message///////
 		//linear actuator current
@@ -240,6 +247,11 @@ void reportState()
 		Serial1.println(report);
 		Serial.println(report);
 	}
+}
+
+int getDistance()
+{
+	return analogRead(hallSensor); 
 }
 
 void callibrateMotors()

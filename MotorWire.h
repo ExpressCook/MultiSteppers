@@ -45,4 +45,7 @@ const unsigned char linear_nd2 = 4;
 const unsigned char linear_nsf = 12;
 const int linear_pos = A2;
 
+//distance hall sensor
+const int hallSensor = 8;
+
 #endif

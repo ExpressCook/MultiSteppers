@@ -948,8 +948,8 @@
 						"selection":
 						[
 							[
-								1259,
-								1259
+								818,
+								818
 							]
 						],
 						"settings":
@@ -1286,7 +1286,7 @@
 			]
 		},
 		{
-			"selected": 1,
+			"selected": 6,
 			"sheets":
 			[
 				{
@@ -2512,7 +2512,7 @@
 		"cols":
 		[
 			0.0,
-			0.650101936799,
+			0.452918838207,
 			1.0
 		],
 		"rows":
@@ -2541,11 +2541,15 @@
 	},
 	"select_project":
 	{
-		"height": 0.0,
+		"height": 500.0,
 		"selected_items":
 		[
+			[
+				"",
+				"/home/wenda/Developer/Distributed/15440-p2/distributed-p2.sublime-project"
+			]
 		],
-		"width": 0.0
+		"width": 380.0
 	},
 	"show_minimap": true,
 	"show_open_files": false,
