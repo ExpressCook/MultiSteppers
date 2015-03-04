@@ -205,7 +205,7 @@ void executeCommand()
 void reportState()
 {
 	static unsigned long lastReportTime = 0;
-	static unsigned long ReportInterval = 100;
+	static unsigned long ReportInterval = 60;
 	
 	unsigned long now = millis();
 	if(now - lastReportTime >= ReportInterval)
