@@ -556,7 +556,7 @@
 			"file": "MultiSteppers.ino",
 			"settings":
 			{
-				"buffer_size": 5998,
+				"buffer_size": 5997,
 				"line_ending": "Unix"
 			}
 		}
@@ -2286,15 +2286,15 @@
 					"file": "MultiSteppers.ino",
 					"settings":
 					{
-						"buffer_size": 5998,
+						"buffer_size": 5997,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								121,
-								121
+								3860,
+								3860
 							]
 						],
 						"settings":
@@ -2480,7 +2480,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 3213.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -2516,7 +2516,7 @@
 		"cols":
 		[
 			0.0,
-			0.405137268241,
+			0.258032416911,
 			1.0
 		],
 		"rows":
