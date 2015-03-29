@@ -34,8 +34,8 @@ const unsigned char rotate_pwm = 9;
 const unsigned char rotate_fb = A0;
 const unsigned char rotate_nd2 = 4;
 const unsigned char rotate_nsf = 12;
-const int encd_1 = 2;
-const int encd_2 = 3;
+const int encd_1 = 2; //21
+const int encd_2 = 3; //20
 
 //Linear actuator
 const unsigned char linear_dir = 8;
