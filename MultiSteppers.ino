@@ -191,7 +191,7 @@ void executeCommand()
 		}
 		else if(mode == 'h')
 		{
-			linearAct.moveTillHit();
+			linearAct.moveTillHit(value);
 		}
 	}
 	else if(chosedMotor == 'g')

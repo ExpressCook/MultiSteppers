@@ -12,7 +12,7 @@ class LinearActuator
 
 		void moveTo(long absolute);
 		void move(long relative);
-		void moveTillHit();
+		void moveTillHit(int strength);
 		bool run();
 		void stop();
 
@@ -40,6 +40,8 @@ class LinearActuator
 
 		//is current limit enabled
 		bool _isCurrentLimitOn;
+		int _currentLimit;
+		int _currentCount;
 };
 
 #endif

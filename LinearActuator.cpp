@@ -30,6 +30,8 @@ void LinearActuator::init()
 
 	//other
 	_isCurrentLimitOn = false;
+	_currentLimit = 50;
+	_currentCount = 3;
 }
 
 void LinearActuator::setSpeed(int speed)
@@ -52,10 +54,22 @@ void LinearActuator::move(long relative)
 	moveTo(_position + relative);
 }
 
-void LinearActuator::moveTillHit()
+void LinearActuator::moveTillHit(int strength)
 {
 	_isCurrentLimitOn = true;
+	_currentLimit = strength;
 	_targetPosition = rangeLMax;
+
+	if(strength<10)
+		_currentCount = 1;
+	else if(strength<25)
+		_currentCount = 2;
+	else if(strength<60)
+		_currentCount = 3;
+	else if(strength<100)
+		_currentCount = 5;
+	else
+		_currentCount = 8;
 }
 
 bool LinearActuator::run()
@@ -64,7 +78,7 @@ bool LinearActuator::run()
 	static unsigned long lastCurrentTime=0, currentInterval=10;
 	unsigned long now;
 
-	static int lCurrent=0, llCurrent=0, current=0;
+	static int curCount = 0;
 
 	if(_isCurrentLimitOn)
 	{
@@ -73,14 +87,18 @@ bool LinearActuator::run()
 		{
 			lastCurrentTime=now;
 
-			llCurrent = lCurrent; lCurrent = current;
-			current = getCurrent();
+			int current = getCurrent();
 			current = current>180? 0:current;
 
-			if(llCurrent>MAX_CURRENT
-		   		&& lCurrent>MAX_CURRENT
-		   		&& current>MAX_CURRENT)
+			if(current>_currentLimit)
+			{
+				curCount++;
+				if(curCount>=_currentCount)
+				{
 					stop();
+					curCount = 0;
+				}
+			}
 
 #if DEBUG
 	Serial.print("llCurrent:");
@@ -94,7 +112,7 @@ bool LinearActuator::run()
 	}
 	else
 	{
-		current = 0; llCurrent=0; lCurrent=0;
+		curCount = 0;
 	}
 
 	//calculating state 

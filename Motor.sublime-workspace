@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"cur",
+				"curCount"
+			],
+			[
+				"_cu",
+				"_currentCount"
+			],
+			[
+				"_cur",
+				"_currentLimit"
+			],
+			[
 				"hall",
 				"hallSensor"
 			],
@@ -483,7 +495,7 @@
 			"file": "LinearParam.h",
 			"settings":
 			{
-				"buffer_size": 240,
+				"buffer_size": 137,
 				"line_ending": "Unix"
 			}
 		},
@@ -491,7 +503,7 @@
 			"file": "LinearActuator.h",
 			"settings":
 			{
-				"buffer_size": 680,
+				"buffer_size": 734,
 				"line_ending": "Unix"
 			}
 		},
@@ -515,7 +527,7 @@
 			"file": "LinearActuator.cpp",
 			"settings":
 			{
-				"buffer_size": 2740,
+				"buffer_size": 2957,
 				"line_ending": "Unix"
 			}
 		},
@@ -556,7 +568,7 @@
 			"file": "MultiSteppers.ino",
 			"settings":
 			{
-				"buffer_size": 5993,
+				"buffer_size": 5998,
 				"line_ending": "Unix"
 			}
 		}
@@ -839,6 +851,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"movetil",
+			"max_current",
 			"_timer2",
 			"_motor",
 			"dcRotate",
@@ -937,7 +951,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -1061,15 +1075,15 @@
 					"file": "LinearParam.h",
 					"settings":
 					{
-						"buffer_size": 240,
+						"buffer_size": 137,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								44,
-								44
+								19,
+								19
 							]
 						],
 						"settings":
@@ -1176,15 +1190,15 @@
 					"file": "LinearActuator.h",
 					"settings":
 					{
-						"buffer_size": 680,
+						"buffer_size": 734,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								672,
-								672
+								259,
+								259
 							]
 						],
 						"settings":
@@ -1608,7 +1622,7 @@
 			]
 		},
 		{
-			"selected": 5,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -1616,15 +1630,15 @@
 					"file": "LinearActuator.cpp",
 					"settings":
 					{
-						"buffer_size": 2740,
+						"buffer_size": 2957,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								293,
-								293
+								1220,
+								1220
 							]
 						],
 						"settings":
@@ -1722,7 +1736,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 663.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -2286,15 +2300,15 @@
 					"file": "MultiSteppers.ino",
 					"settings":
 					{
-						"buffer_size": 5993,
+						"buffer_size": 5998,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4104,
-								4104
+								3718,
+								3718
 							]
 						],
 						"settings":
@@ -2480,7 +2494,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3417.0,
+						"translation.y": 2945.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -2516,7 +2530,7 @@
 		"cols":
 		[
 			0.0,
-			0.319065280761,
+			0.324542589055,
 			1.0
 		],
 		"rows":
@@ -2550,7 +2564,7 @@
 		[
 			[
 				"",
-				"/home/wenda/Developer/Autonomy/automomy-p2.sublime-project"
+				"/home/wenda/Desktop/Developer/Distributed/15440-p3/dis-p3.sublime-project"
 			]
 		],
 		"width": 380.0
