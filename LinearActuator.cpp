@@ -62,7 +62,7 @@ void LinearActuator::moveTillHit(int strength)
 
 	if(strength<10)
 		_currentCount = 1;
-	else if(strength<25)
+	else if(strength<20)
 		_currentCount = 2;
 	else if(strength<60)
 		_currentCount = 3;
