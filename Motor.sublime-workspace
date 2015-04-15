@@ -951,7 +951,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -1428,8 +1428,8 @@
 						"selection":
 						[
 							[
-								534,
-								534
+								507,
+								507
 							]
 						],
 						"settings":
@@ -1622,7 +1622,7 @@
 			]
 		},
 		{
-			"selected": 0,
+			"selected": 5,
 			"sheets":
 			[
 				{
@@ -2494,7 +2494,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2945.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -2530,7 +2530,7 @@
 		"cols":
 		[
 			0.0,
-			0.324542589055,
+			0.266639615659,
 			1.0
 		],
 		"rows":

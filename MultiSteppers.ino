@@ -258,7 +258,7 @@ void callibrateMotors()
 {
 	//callibrate dc motors
 	rotateMotor.stop();
-	linearAct.moveTo(rangeLMin);
+	linearAct.moveTo(rangeLMin+10);
 
 	//callibrate stepper motors
 	step1.setMaxSpeed(150);
