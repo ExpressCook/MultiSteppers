@@ -1,5 +1,5 @@
 #ifndef MotorParam_h
-#define MotorPara_h
+#define MotorParam_h
 
 //serial port 
 const int serialRate = 19200;
