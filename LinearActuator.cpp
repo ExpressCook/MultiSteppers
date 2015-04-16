@@ -41,7 +41,10 @@ void LinearActuator::setSpeed(int speed)
 
 void LinearActuator::moveTo(long absolute)
 {
-	_isCurrentLimitOn = false;
+	// protective for linear actuator current
+	_isCurrentLimitOn = true;
+	_currentLimit = 80;
+	_currentCount = 5;
 
 	if(absolute != _targetPosition ||
 		absolute <= 1023 ||

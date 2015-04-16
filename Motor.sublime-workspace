@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"_curre",
+				"_currentCount"
+			],
+			[
 				"cur",
 				"curCount"
 			],
@@ -519,7 +523,7 @@
 			"file": "MotorParam.h",
 			"settings":
 			{
-				"buffer_size": 555,
+				"buffer_size": 556,
 				"line_ending": "Unix"
 			}
 		},
@@ -527,7 +531,7 @@
 			"file": "LinearActuator.cpp",
 			"settings":
 			{
-				"buffer_size": 2957,
+				"buffer_size": 3040,
 				"line_ending": "Unix"
 			}
 		},
@@ -568,7 +572,7 @@
 			"file": "MultiSteppers.ino",
 			"settings":
 			{
-				"buffer_size": 5998,
+				"buffer_size": 6001,
 				"line_ending": "Unix"
 			}
 		}
@@ -1421,15 +1425,15 @@
 					"file": "MotorParam.h",
 					"settings":
 					{
-						"buffer_size": 555,
+						"buffer_size": 556,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								507,
-								507
+								542,
+								542
 							]
 						],
 						"settings":
@@ -1622,7 +1626,7 @@
 			]
 		},
 		{
-			"selected": 5,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -1630,15 +1634,15 @@
 					"file": "LinearActuator.cpp",
 					"settings":
 					{
-						"buffer_size": 2957,
+						"buffer_size": 3040,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1084,
-								1084
+								897,
+								897
 							]
 						],
 						"settings":
@@ -1736,7 +1740,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 663.0,
+						"translation.y": 510.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -2300,15 +2304,15 @@
 					"file": "MultiSteppers.ino",
 					"settings":
 					{
-						"buffer_size": 5998,
+						"buffer_size": 6001,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3718,
-								3718
+								5004,
+								5004
 							]
 						],
 						"settings":
@@ -2494,7 +2498,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 544.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -2530,7 +2534,7 @@
 		"cols":
 		[
 			0.0,
-			0.266639615659,
+			0.330902938543,
 			1.0
 		],
 		"rows":
@@ -2573,6 +2577,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 162.0,
+	"side_bar_width": 164.0,
 	"status_bar_visible": true
 }
