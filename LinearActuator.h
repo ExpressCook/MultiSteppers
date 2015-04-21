@@ -42,6 +42,7 @@ class LinearActuator
 		bool _isCurrentLimitOn;
 		int _currentLimit;
 		int _currentCount;
+		int _nowCount;
 };
 
 #endif
