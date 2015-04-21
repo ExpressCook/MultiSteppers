@@ -44,7 +44,7 @@ void LinearActuator::moveTo(long absolute)
 	// protective for linear actuator current
 	_isCurrentLimitOn = true;
 	_currentLimit = 80;
-	_currentCount = 100;
+	_currentCount = 30;
 
 	if(absolute != _targetPosition ||
 		absolute <= 1023 ||
@@ -63,16 +63,15 @@ void LinearActuator::moveTillHit(int strength)
 	_currentLimit = strength;
 	_targetPosition = rangeLMax;
 
-	if(strength<10)
-		_currentCount = 1;
-	else if(strength<20)
-		_currentCount = 2;
-	else if(strength<60)
+
+	if(strength<20)
 		_currentCount = 3;
-	else if(strength<100)
-		_currentCount = 5;
-	else
+	else if(strength<60)
+		_currentCount = 6;
+	else if(strength<120)
 		_currentCount = 8;
+	else
+		_currentCount = 10;
 }
 
 bool LinearActuator::run()
@@ -91,7 +90,7 @@ bool LinearActuator::run()
 			lastCurrentTime=now;
 
 			int current = getCurrent();
-			current = current>180? 0:current;
+			current = current>150? 0:current;
 
 			if(current>_currentLimit)
 			{
@@ -99,7 +98,6 @@ bool LinearActuator::run()
 				if(curCount>=_currentCount)
 				{
 					stop();
-					//Serial.print("cur exceed!!!");
 					curCount = 0;
 				}
 			}
