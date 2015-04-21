@@ -44,7 +44,7 @@ void LinearActuator::moveTo(long absolute)
 	// protective for linear actuator current
 	_isCurrentLimitOn = true;
 	_currentLimit = 80;
-	_currentCount = 5;
+	_currentCount = 100;
 
 	if(absolute != _targetPosition ||
 		absolute <= 1023 ||
@@ -99,6 +99,7 @@ bool LinearActuator::run()
 				if(curCount>=_currentCount)
 				{
 					stop();
+					//Serial.print("cur exceed!!!");
 					curCount = 0;
 				}
 			}

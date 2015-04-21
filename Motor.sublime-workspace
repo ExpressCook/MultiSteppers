@@ -504,6 +504,14 @@
 			}
 		},
 		{
+			"file": "ProStepper.h",
+			"settings":
+			{
+				"buffer_size": 2197,
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "LinearActuator.h",
 			"settings":
 			{
@@ -573,6 +581,14 @@
 			"settings":
 			{
 				"buffer_size": 6001,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "ProStepper.cpp",
+			"settings":
+			{
+				"buffer_size": 9286,
 				"line_ending": "Unix"
 			}
 		}
@@ -955,7 +971,7 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -1191,6 +1207,33 @@
 				},
 				{
 					"buffer": 2,
+					"file": "ProStepper.h",
+					"settings":
+					{
+						"buffer_size": 2197,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								679,
+								679
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 306.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
 					"file": "LinearActuator.h",
 					"settings":
 					{
@@ -1306,7 +1349,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 4,
 					"file": "MotorWire.h",
 					"settings":
 					{
@@ -1421,7 +1464,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 5,
 					"file": "MotorParam.h",
 					"settings":
 					{
@@ -1626,11 +1669,11 @@
 			]
 		},
 		{
-			"selected": 0,
+			"selected": 6,
 			"sheets":
 			[
 				{
-					"buffer": 5,
+					"buffer": 6,
 					"file": "LinearActuator.cpp",
 					"settings":
 					{
@@ -1746,7 +1789,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 7,
 					"file": "RotateMotor.h",
 					"settings":
 					{
@@ -1862,7 +1905,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 8,
 					"file": "DCMotor.h",
 					"settings":
 					{
@@ -2067,7 +2110,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 9,
 					"file": "RotateParam.h",
 					"settings":
 					{
@@ -2183,7 +2226,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 10,
 					"file": "DCMotor.cpp",
 					"settings":
 					{
@@ -2300,7 +2343,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 11,
 					"file": "MultiSteppers.ino",
 					"settings":
 					{
@@ -2311,8 +2354,8 @@
 						"selection":
 						[
 							[
-								5004,
-								5004
+								5475,
+								5475
 							]
 						],
 						"settings":
@@ -2498,7 +2541,34 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 544.0,
+						"translation.y": 4692.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "ProStepper.cpp",
+					"settings":
+					{
+						"buffer_size": 9286,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1843,
+								1843
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3162.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -2534,7 +2604,7 @@
 		"cols":
 		[
 			0.0,
-			0.330902938543,
+			0.410056543559,
 			1.0
 		],
 		"rows":
