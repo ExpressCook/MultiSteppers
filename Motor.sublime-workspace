@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"print",
+				"print"
+			],
+			[
 				"_curre",
 				"_currentCount"
 			],
@@ -252,10 +256,6 @@
 				"DEBUG"
 			],
 			[
-				"print",
-				"println"
-			],
-			[
 				"_step",
 				"_stepCount"
 			],
@@ -499,7 +499,7 @@
 			"file": "LinearParam.h",
 			"settings":
 			{
-				"buffer_size": 137,
+				"buffer_size": 136,
 				"line_ending": "Unix"
 			}
 		},
@@ -515,7 +515,7 @@
 			"file": "LinearActuator.h",
 			"settings":
 			{
-				"buffer_size": 734,
+				"buffer_size": 751,
 				"line_ending": "Unix"
 			}
 		},
@@ -539,7 +539,7 @@
 			"file": "LinearActuator.cpp",
 			"settings":
 			{
-				"buffer_size": 3040,
+				"buffer_size": 3024,
 				"line_ending": "Unix"
 			}
 		},
@@ -971,7 +971,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -1095,15 +1095,15 @@
 					"file": "LinearParam.h",
 					"settings":
 					{
-						"buffer_size": 137,
+						"buffer_size": 136,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								19,
-								19
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1237,15 +1237,15 @@
 					"file": "LinearActuator.h",
 					"settings":
 					{
-						"buffer_size": 734,
+						"buffer_size": 751,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								259,
-								259
+								740,
+								740
 							]
 						],
 						"settings":
@@ -1343,7 +1343,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 102.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1669,7 +1669,7 @@
 			]
 		},
 		{
-			"selected": 6,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -1677,15 +1677,15 @@
 					"file": "LinearActuator.cpp",
 					"settings":
 					{
-						"buffer_size": 3040,
+						"buffer_size": 3024,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								934,
-								934
+								1619,
+								1619
 							]
 						],
 						"settings":
@@ -1783,7 +1783,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 510.0,
+						"translation.y": 1078.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -2541,7 +2541,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 4692.0,
+						"translation.y": 3502.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -2604,7 +2604,7 @@
 		"cols":
 		[
 			0.0,
-			0.410056543559,
+			0.357548706568,
 			1.0
 		],
 		"rows":
@@ -2638,7 +2638,7 @@
 		[
 			[
 				"",
-				"/home/wenda/Desktop/Developer/Distributed/15440-p3/dis-p3.sublime-project"
+				"/home/wenda/Developer/ExpressCook/MultiSteppers/Motor.sublime-project"
 			]
 		],
 		"width": 380.0

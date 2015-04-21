@@ -92,7 +92,7 @@ void ProStepper::move(long relative)
 		return;
 
 	//wake up
-	wake();
+	//wake();
 
 	_targetPosition = _position + relative;
 
@@ -214,7 +214,7 @@ bool ProStepper::run()
 
 #endif
 		//sleep
-		sleep(); 
+		//sleep(); 
 		return true;
 	}
 }
