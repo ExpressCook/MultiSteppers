@@ -91,6 +91,9 @@ void ProStepper::move(long relative)
 	if(relative == 0)
 		return;
 
+	//wake up
+	wake();
+
 	_targetPosition = _position + relative;
 
 	//the stepper is still moving
@@ -210,6 +213,8 @@ bool ProStepper::run()
 		Serial.println(_stepInterval);
 
 #endif
+		//sleep
+		sleep(); 
 		return true;
 	}
 }
