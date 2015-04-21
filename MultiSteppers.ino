@@ -90,7 +90,7 @@ void readCommand(HardwareSerial serial)
 			{
 				mode = serial.read();
 			}
-			while(mode!='a' && mode!='r');
+			while(mode!='a' && mode!='r' && mode!='s' && mode!='w');
 
 			//1000
 			value = serial.parseInt();
@@ -160,6 +160,10 @@ void executeCommand()
 			value = constrain(value,0,rangeX);
 			step1.moveTo(value);
 		}
+		else if(mode == 's')
+			step1.sleep();
+		else if(mode == 'w')
+			step1.wake();
 	}
 	else if(chosedMotor == 'y')
 	{
@@ -174,6 +178,10 @@ void executeCommand()
 			value = constrain(value,0,rangeY);
 			step2.moveTo(value);
 		}
+		else if(mode == 's')
+			step2.sleep();
+		else if(mode == 'w')
+			step2.wake();
 	}
 	else if(chosedMotor == 'r')
 	{
