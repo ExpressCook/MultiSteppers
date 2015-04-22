@@ -6,7 +6,7 @@ const int serialRate = 19200;
 const int serialTimeout = 5;
 
 //x y direction range
-const long rangeX = 1700;
+const long rangeX = 1750;
 const long rangeY = 720;
 
 //stepper in x direction

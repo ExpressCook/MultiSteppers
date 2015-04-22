@@ -269,6 +269,8 @@ void callibrateMotors()
 	linearAct.moveTo(rangeLMin+10);
 
 	//callibrate stepper motors
+	step1.wake();
+	step2.wake();
 	step1.setMaxSpeed(150);
 	step2.setMaxSpeed(150);
 
